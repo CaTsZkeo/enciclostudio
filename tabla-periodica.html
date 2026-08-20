@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tabla periódica — Enciclostudio</title>
+
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="stylesheet" href="../enciclostudio.css">
+</head>
+
+
+<body class="enciclostudio subject-page">
+
+    <h1>⚗️ Tabla periódica</h1>
+
+    <p class="introduccion">
+        La tabla periódica organiza los elementos químicos
+        según su número atómico y sus propiedades.
+    </p>
+
+
+    <!-- ==================================================
+         CONTENEDOR PRINCIPAL
+         ================================================== -->
+
+    <main class="contenedor-tabla">
+
+
+        <!-- ==================================================
+             TABLA PERIÓDICA PRINCIPAL
+             ================================================== -->
+
+        <div class="tabla-periodica">
+
+
+            <!-- ==============================
+                 PERÍODO 1
+                 ============================== -->
+
+            <button class="elemento"
+                    data-group="1"
+                    data-period="1"
+                    onclick="mostrarElemento('H')">
+
+                <span class="numero">1</span>
+                <strong>H</strong>
+                <span>Hidrógeno</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="18"
+                    data-period="1"
+                    onclick="mostrarElemento('He')">
+
+                <span class="numero">2</span>
+                <strong>He</strong>
+                <span>Helio</span>
+
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 2
+                 ============================== -->
+
+            <button class="elemento"
+                    data-group="1"
+                    data-period="2"
+                    onclick="mostrarElemento('Li')">
+
+                <span class="numero">3</span>
+                <strong>Li</strong>
+                <span>Litio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="2"
+                    data-period="2"
+                    onclick="mostrarElemento('Be')">
+
+                <span class="numero">4</span>
+                <strong>Be</strong>
+                <span>Berilio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="13"
+                    data-period="2"
+                    onclick="mostrarElemento('B')">
+
+                <span class="numero">5</span>
+                <strong>B</strong>
+                <span>Boro</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="14"
+                    data-period="2"
+                    onclick="mostrarElemento('C')">
+
+                <span class="numero">6</span>
+                <strong>C</strong>
+                <span>Carbono</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="15"
+                    data-period="2"
+                    onclick="mostrarElemento('N')">
+
+                <span class="numero">7</span>
+                <strong>N</strong>
+                <span>Nitrógeno</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="16"
+                    data-period="2"
+                    onclick="mostrarElemento('O')">
+
+                <span class="numero">8</span>
+                <strong>O</strong>
+                <span>Oxígeno</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="17"
+                    data-period="2"
+                    onclick="mostrarElemento('F')">
+
+                <span class="numero">9</span>
+                <strong>F</strong>
+                <span>Flúor</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="18"
+                    data-period="2"
+                    onclick="mostrarElemento('Ne')">
+
+                <span class="numero">10</span>
+                <strong>Ne</strong>
+                <span>Neón</span>
+
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 3
+                 ============================== -->
+
+            <button class="elemento"
+                    data-group="1"
+                    data-period="3"
+                    onclick="mostrarElemento('Na')">
+
+                <span class="numero">11</span>
+                <strong>Na</strong>
+                <span>Sodio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="2"
+                    data-period="3"
+                    onclick="mostrarElemento('Mg')">
+
+                <span class="numero">12</span>
+                <strong>Mg</strong>
+                <span>Magnesio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="13"
+                    data-period="3"
+                    onclick="mostrarElemento('Al')">
+
+                <span class="numero">13</span>
+                <strong>Al</strong>
+                <span>Aluminio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="14"
+                    data-period="3"
+                    onclick="mostrarElemento('Si')">
+
+                <span class="numero">14</span>
+                <strong>Si</strong>
+                <span>Silicio</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="15"
+                    data-period="3"
+                    onclick="mostrarElemento('P')">
+
+                <span class="numero">15</span>
+                <strong>P</strong>
+                <span>Fósforo</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="16"
+                    data-period="3"
+                    onclick="mostrarElemento('S')">
+
+                <span class="numero">16</span>
+                <strong>S</strong>
+                <span>Azufre</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="17"
+                    data-period="3"
+                    onclick="mostrarElemento('Cl')">
+
+                <span class="numero">17</span>
+                <strong>Cl</strong>
+                <span>Cloro</span>
+
+            </button>
+
+
+            <button class="elemento"
+                    data-group="18"
+                    data-period="3"
+                    onclick="mostrarElemento('Ar')">
+
+                <span class="numero">18</span>
+                <strong>Ar</strong>
+                <span>Argón</span>
+
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 4
+                 ============================== -->
+
+            <button class="elemento" data-group="1" data-period="4" onclick="mostrarElemento('K')">
+                <span class="numero">19</span>
+                <strong>K</strong>
+                <span>Potasio</span>
+            </button>
+
+            <button class="elemento" data-group="2" data-period="4" onclick="mostrarElemento('Ca')">
+                <span class="numero">20</span>
+                <strong>Ca</strong>
+                <span>Calcio</span>
+            </button>
+
+            <button class="elemento" data-group="3" data-period="4" onclick="mostrarElemento('Sc')">
+                <span class="numero">21</span>
+                <strong>Sc</strong>
+                <span>Escandio</span>
+            </button>
+
+            <button class="elemento" data-group="4" data-period="4" onclick="mostrarElemento('Ti')">
+                <span class="numero">22</span>
+                <strong>Ti</strong>
+                <span>Titanio</span>
+            </button>
+
+            <button class="elemento" data-group="5" data-period="4" onclick="mostrarElemento('V')">
+                <span class="numero">23</span>
+                <strong>V</strong>
+                <span>Vanadio</span>
+            </button>
+
+            <button class="elemento" data-group="6" data-period="4" onclick="mostrarElemento('Cr')">
+                <span class="numero">24</span>
+                <strong>Cr</strong>
+                <span>Cromo</span>
+            </button>
+
+            <button class="elemento" data-group="7" data-period="4" onclick="mostrarElemento('Mn')">
+                <span class="numero">25</span>
+                <strong>Mn</strong>
+                <span>Manganeso</span>
+            </button>
+
+            <button class="elemento" data-group="8" data-period="4" onclick="mostrarElemento('Fe')">
+                <span class="numero">26</span>
+                <strong>Fe</strong>
+                <span>Hierro</span>
+            </button>
+
+            <button class="elemento" data-group="9" data-period="4" onclick="mostrarElemento('Co')">
+                <span class="numero">27</span>
+                <strong>Co</strong>
+                <span>Cobalto</span>
+            </button>
+
+            <button class="elemento" data-group="10" data-period="4" onclick="mostrarElemento('Ni')">
+                <span class="numero">28</span>
+                <strong>Ni</strong>
+                <span>Níquel</span>
+            </button>
+
+            <button class="elemento" data-group="11" data-period="4" onclick="mostrarElemento('Cu')">
+                <span class="numero">29</span>
+                <strong>Cu</strong>
+                <span>Cobre</span>
+            </button>
+
+            <button class="elemento" data-group="12" data-period="4" onclick="mostrarElemento('Zn')">
+                <span class="numero">30</span>
+                <strong>Zn</strong>
+                <span>Zinc</span>
+            </button>
+
+            <button class="elemento" data-group="13" data-period="4" onclick="mostrarElemento('Ga')">
+                <span class="numero">31</span>
+                <strong>Ga</strong>
+                <span>Galio</span>
+            </button>
+
+            <button class="elemento" data-group="14" data-period="4" onclick="mostrarElemento('Ge')">
+                <span class="numero">32</span>
+                <strong>Ge</strong>
+                <span>Germanio</span>
+            </button>
+
+            <button class="elemento" data-group="15" data-period="4" onclick="mostrarElemento('As')">
+                <span class="numero">33</span>
+                <strong>As</strong>
+                <span>Arsénico</span>
+            </button>
+
+            <button class="elemento" data-group="16" data-period="4" onclick="mostrarElemento('Se')">
+                <span class="numero">34</span>
+                <strong>Se</strong>
+                <span>Selenio</span>
+            </button>
+
+            <button class="elemento" data-group="17" data-period="4" onclick="mostrarElemento('Br')">
+                <span class="numero">35</span>
+                <strong>Br</strong>
+                <span>Bromo</span>
+            </button>
+
+            <button class="elemento" data-group="18" data-period="4" onclick="mostrarElemento('Kr')">
+                <span class="numero">36</span>
+                <strong>Kr</strong>
+                <span>Kriptón</span>
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 5
+                 ============================== -->
+
+            <button class="elemento" data-group="1" data-period="5" onclick="mostrarElemento('Rb')">
+                <span class="numero">37</span>
+                <strong>Rb</strong>
+                <span>Rubidio</span>
+            </button>
+
+            <button class="elemento" data-group="2" data-period="5" onclick="mostrarElemento('Sr')">
+                <span class="numero">38</span>
+                <strong>Sr</strong>
+                <span>Estroncio</span>
+            </button>
+
+            <button class="elemento" data-group="3" data-period="5" onclick="mostrarElemento('Y')">
+                <span class="numero">39</span>
+                <strong>Y</strong>
+                <span>Itrio</span>
+            </button>
+
+            <button class="elemento" data-group="4" data-period="5" onclick="mostrarElemento('Zr')">
+                <span class="numero">40</span>
+                <strong>Zr</strong>
+                <span>Circonio</span>
+            </button>
+
+            <button class="elemento" data-group="5" data-period="5" onclick="mostrarElemento('Nb')">
+                <span class="numero">41</span>
+                <strong>Nb</strong>
+                <span>Niobio</span>
+            </button>
+
+            <button class="elemento" data-group="6" data-period="5" onclick="mostrarElemento('Mo')">
+                <span class="numero">42</span>
+                <strong>Mo</strong>
+                <span>Molibdeno</span>
+            </button>
+
+            <button class="elemento" data-group="7" data-period="5" onclick="mostrarElemento('Tc')">
+                <span class="numero">43</span>
+                <strong>Tc</strong>
+                <span>Tecnecio</span>
+            </button>
+
+            <button class="elemento" data-group="8" data-period="5" onclick="mostrarElemento('Ru')">
+                <span class="numero">44</span>
+                <strong>Ru</strong>
+                <span>Rutenio</span>
+            </button>
+
+            <button class="elemento" data-group="9" data-period="5" onclick="mostrarElemento('Rh')">
+                <span class="numero">45</span>
+                <strong>Rh</strong>
+                <span>Rodio</span>
+            </button>
+
+            <button class="elemento" data-group="10" data-period="5" onclick="mostrarElemento('Pd')">
+                <span class="numero">46</span>
+                <strong>Pd</strong>
+                <span>Paladio</span>
+            </button>
+
+            <button class="elemento" data-group="11" data-period="5" onclick="mostrarElemento('Ag')">
+                <span class="numero">47</span>
+                <strong>Ag</strong>
+                <span>Plata</span>
+            </button>
+
+            <button class="elemento" data-group="12" data-period="5" onclick="mostrarElemento('Cd')">
+                <span class="numero">48</span>
+                <strong>Cd</strong>
+                <span>Cadmio</span>
+            </button>
+
+            <button class="elemento" data-group="13" data-period="5" onclick="mostrarElemento('In')">
+                <span class="numero">49</span>
+                <strong>In</strong>
+                <span>Indio</span>
+            </button>
+
+            <button class="elemento" data-group="14" data-period="5" onclick="mostrarElemento('Sn')">
+                <span class="numero">50</span>
+                <strong>Sn</strong>
+                <span>Estaño</span>
+            </button>
+
+            <button class="elemento" data-group="15" data-period="5" onclick="mostrarElemento('Sb')">
+                <span class="numero">51</span>
+                <strong>Sb</strong>
+                <span>Antimonio</span>
+            </button>
+
+            <button class="elemento" data-group="16" data-period="5" onclick="mostrarElemento('Te')">
+                <span class="numero">52</span>
+                <strong>Te</strong>
+                <span>Telurio</span>
+            </button>
+
+            <button class="elemento" data-group="17" data-period="5" onclick="mostrarElemento('I')">
+                <span class="numero">53</span>
+                <strong>I</strong>
+                <span>Yodo</span>
+            </button>
+
+            <button class="elemento" data-group="18" data-period="5" onclick="mostrarElemento('Xe')">
+                <span class="numero">54</span>
+                <strong>Xe</strong>
+                <span>Xenón</span>
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 6
+                 ============================== -->
+
+            <button class="elemento" data-group="1" data-period="6" onclick="mostrarElemento('Cs')">
+                <span class="numero">55</span>
+                <strong>Cs</strong>
+                <span>Cesio</span>
+            </button>
+
+            <button class="elemento" data-group="2" data-period="6" onclick="mostrarElemento('Ba')">
+                <span class="numero">56</span>
+                <strong>Ba</strong>
+                <span>Bario</span>
+            </button>
+
+            <button class="elemento" data-group="4" data-period="6" onclick="mostrarElemento('Hf')">
+                <span class="numero">72</span>
+                <strong>Hf</strong>
+                <span>Hafnio</span>
+            </button>
+
+            <button class="elemento" data-group="5" data-period="6" onclick="mostrarElemento('Ta')">
+                <span class="numero">73</span>
+                <strong>Ta</strong>
+                <span>Tantalio</span>
+            </button>
+
+            <button class="elemento" data-group="6" data-period="6" onclick="mostrarElemento('W')">
+                <span class="numero">74</span>
+                <strong>W</strong>
+                <span>Wolframio</span>
+            </button>
+
+            <button class="elemento" data-group="7" data-period="6" onclick="mostrarElemento('Re')">
+                <span class="numero">75</span>
+                <strong>Re</strong>
+                <span>Renio</span>
+            </button>
+
+            <button class="elemento" data-group="8" data-period="6" onclick="mostrarElemento('Os')">
+                <span class="numero">76</span>
+                <strong>Os</strong>
+                <span>Osmio</span>
+            </button>
+
+            <button class="elemento" data-group="9" data-period="6" onclick="mostrarElemento('Ir')">
+                <span class="numero">77</span>
+                <strong>Ir</strong>
+                <span>Iridio</span>
+            </button>
+
+            <button class="elemento" data-group="10" data-period="6" onclick="mostrarElemento('Pt')">
+                <span class="numero">78</span>
+                <strong>Pt</strong>
+                <span>Platino</span>
+            </button>
+
+            <button class="elemento" data-group="11" data-period="6" onclick="mostrarElemento('Au')">
+                <span class="numero">79</span>
+                <strong>Au</strong>
+                <span>Oro</span>
+            </button>
+
+            <button class="elemento" data-group="12" data-period="6" onclick="mostrarElemento('Hg')">
+                <span class="numero">80</span>
+                <strong>Hg</strong>
+                <span>Mercurio</span>
+            </button>
+
+            <button class="elemento" data-group="13" data-period="6" onclick="mostrarElemento('Tl')">
+                <span class="numero">81</span>
+                <strong>Tl</strong>
+                <span>Talio</span>
+            </button>
+
+            <button class="elemento" data-group="14" data-period="6" onclick="mostrarElemento('Pb')">
+                <span class="numero">82</span>
+                <strong>Pb</strong>
+                <span>Plomo</span>
+            </button>
+
+            <button class="elemento" data-group="15" data-period="6" onclick="mostrarElemento('Bi')">
+                <span class="numero">83</span>
+                <strong>Bi</strong>
+                <span>Bismuto</span>
+            </button>
+
+            <button class="elemento" data-group="16" data-period="6" onclick="mostrarElemento('Po')">
+                <span class="numero">84</span>
+                <strong>Po</strong>
+                <span>Polonio</span>
+            </button>
+
+            <button class="elemento" data-group="17" data-period="6" onclick="mostrarElemento('At')">
+                <span class="numero">85</span>
+                <strong>At</strong>
+                <span>Astato</span>
+            </button>
+
+            <button class="elemento" data-group="18" data-period="6" onclick="mostrarElemento('Rn')">
+                <span class="numero">86</span>
+                <strong>Rn</strong>
+                <span>Radón</span>
+            </button>
+
+
+            <!-- ==============================
+                 PERÍODO 7
+                 ============================== -->
+
+            <button class="elemento" data-group="1" data-period="7" onclick="mostrarElemento('Fr')">
+                <span class="numero">87</span>
+                <strong>Fr</strong>
+                <span>Francio</span>
+            </button>
+
+            <button class="elemento" data-group="2" data-period="7" onclick="mostrarElemento('Ra')">
+                <span class="numero">88</span>
+                <strong>Ra</strong>
+                <span>Radio</span>
+            </button>
+
+            <button class="elemento" data-group="4" data-period="7" onclick="mostrarElemento('Rf')">
+                <span class="numero">104</span>
+                <strong>Rf</strong>
+                <span>Rutherfordio</span>
+            </button>
+
+            <button class="elemento" data-group="5" data-period="7" onclick="mostrarElemento('Db')">
+                <span class="numero">105</span>
+                <strong>Db</strong>
+                <span>Dubnio</span>
+            </button>
+
+            <button class="elemento" data-group="6" data-period="7" onclick="mostrarElemento('Sg')">
+                <span class="numero">106</span>
+                <strong>Sg</strong>
+                <span>Seaborgio</span>
+            </button>
+
+            <button class="elemento" data-group="7" data-period="7" onclick="mostrarElemento('Bh')">
+                <span class="numero">107</span>
+                <strong>Bh</strong>
+                <span>Bohrio</span>
+            </button>
+
+            <button class="elemento" data-group="8" data-period="7" onclick="mostrarElemento('Hs')">
+                <span class="numero">108</span>
+                <strong>Hs</strong>
+                <span>Hassio</span>
+            </button>
+
+            <button class="elemento" data-group="9" data-period="7" onclick="mostrarElemento('Mt')">
+                <span class="numero">109</span>
+                <strong>Mt</strong>
+                <span>Meitnerio</span>
+            </button>
+
+            <button class="elemento" data-group="10" data-period="7" onclick="mostrarElemento('Ds')">
+                <span class="numero">110</span>
+                <strong>Ds</strong>
+                <span>Darmstadtio</span>
+            </button>
+
+            <button class="elemento" data-group="11" data-period="7" onclick="mostrarElemento('Rg')">
+                <span class="numero">111</span>
+                <strong>Rg</strong>
+                <span>Roentgenio</span>
+            </button>
+
+            <button class="elemento" data-group="12" data-period="7" onclick="mostrarElemento('Cn')">
+                <span class="numero">112</span>
+                <strong>Cn</strong>
+                <span>Copernicio</span>
+            </button>
+
+            <button class="elemento" data-group="13" data-period="7" onclick="mostrarElemento('Nh')">
+                <span class="numero">113</span>
+                <strong>Nh</strong>
+                <span>Nihonio</span>
+            </button>
+
+            <button class="elemento" data-group="14" data-period="7" onclick="mostrarElemento('Fl')">
+                <span class="numero">114</span>
+                <strong>Fl</strong>
+                <span>Flerovio</span>
+            </button>
+
+            <button class="elemento" data-group="15" data-period="7" onclick="mostrarElemento('Mc')">
+                <span class="numero">115</span>
+                <strong>Mc</strong>
+                <span>Moscovio</span>
+            </button>
+
+            <button class="elemento" data-group="16" data-period="7" onclick="mostrarElemento('Lv')">
+                <span class="numero">116</span>
+                <strong>Lv</strong>
+                <span>Livermorio</span>
+            </button>
+
+            <button class="elemento" data-group="17" data-period="7" onclick="mostrarElemento('Ts')">
+                <span class="numero">117</span>
+                <strong>Ts</strong>
+                <span>Teneso</span>
+            </button>
+
+            <button class="elemento" data-group="18" data-period="7" onclick="mostrarElemento('Og')">
+                <span class="numero">118</span>
+                <strong>Og</strong>
+                <span>Oganesón</span>
+            </button>
+
+
+        </div>
+
+
+        <!-- ==================================================
+             LANTÁNIDOS
+             ================================================== -->
+
+        <h3 class="titulo-serie">
+            Lantánidos
+        </h3>
+
+        <div class="tabla-series">
+
+            <button class="elemento" onclick="mostrarElemento('La')">
+                <span class="numero">57</span>
+                <strong>La</strong>
+                <span>Lantano</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Ce')">
+                <span class="numero">58</span>
+                <strong>Ce</strong>
+                <span>Cerio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Pr')">
+                <span class="numero">59</span>
+                <strong>Pr</strong>
+                <span>Praseodimio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Nd')">
+                <span class="numero">60</span>
+                <strong>Nd</strong>
+                <span>Neodimio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Pm')">
+                <span class="numero">61</span>
+                <strong>Pm</strong>
+                <span>Prometio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Sm')">
+                <span class="numero">62</span>
+                <strong>Sm</strong>
+                <span>Samario</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Eu')">
+                <span class="numero">63</span>
+                <strong>Eu</strong>
+                <span>Europio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Gd')">
+                <span class="numero">64</span>
+                <strong>Gd</strong>
+                <span>Gadolinio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Tb')">
+                <span class="numero">65</span>
+                <strong>Tb</strong>
+                <span>Terbio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Dy')">
+                <span class="numero">66</span>
+                <strong>Dy</strong>
+                <span>Disprosio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Ho')">
+                <span class="numero">67</span>
+                <strong>Ho</strong>
+                <span>Holmio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Er')">
+                <span class="numero">68</span>
+                <strong>Er</strong>
+                <span>Erbio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Tm')">
+                <span class="numero">69</span>
+                <strong>Tm</strong>
+                <span>Tulio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Yb')">
+                <span class="numero">70</span>
+                <strong>Yb</strong>
+                <span>Iterbio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Lu')">
+                <span class="numero">71</span>
+                <strong>Lu</strong>
+                <span>Lutecio</span>
+            </button>
+
+        </div>
+
+
+        <!-- ==================================================
+             ACTÍNIDOS
+             ================================================== -->
+
+        <h3 class="titulo-serie">
+            Actínidos
+        </h3>
+
+        <div class="tabla-series">
+
+            <button class="elemento" onclick="mostrarElemento('Ac')">
+                <span class="numero">89</span>
+                <strong>Ac</strong>
+                <span>Actinio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Th')">
+                <span class="numero">90</span>
+                <strong>Th</strong>
+                <span>Torio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Pa')">
+                <span class="numero">91</span>
+                <strong>Pa</strong>
+                <span>Protactinio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('U')">
+                <span class="numero">92</span>
+                <strong>U</strong>
+                <span>Uranio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Np')">
+                <span class="numero">93</span>
+                <strong>Np</strong>
+                <span>Neptunio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Pu')">
+                <span class="numero">94</span>
+                <strong>Pu</strong>
+                <span>Plutonio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Am')">
+                <span class="numero">95</span>
+                <strong>Am</strong>
+                <span>Americio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Cm')">
+                <span class="numero">96</span>
+                <strong>Cm</strong>
+                <span>Curio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Bk')">
+                <span class="numero">97</span>
+                <strong>Bk</strong>
+                <span>Berkelio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Cf')">
+                <span class="numero">98</span>
+                <strong>Cf</strong>
+                <span>Californio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Es')">
+                <span class="numero">99</span>
+                <strong>Es</strong>
+                <span>Einsteinio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Fm')">
+                <span class="numero">100</span>
+                <strong>Fm</strong>
+                <span>Fermio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Md')">
+                <span class="numero">101</span>
+                <strong>Md</strong>
+                <span>Mendelevio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('No')">
+                <span class="numero">102</span>
+                <strong>No</strong>
+                <span>Nobelio</span>
+            </button>
+
+            <button class="elemento" onclick="mostrarElemento('Lr')">
+                <span class="numero">103</span>
+                <strong>Lr</strong>
+                <span>Lawrencio</span>
+            </button>
+
+        </div>
+
+
+<!-- ==================================================
+             FICHA DEL ELEMENTO
+     ================================================== -->
+
+    <div class="ficha-elemento">
+
+    <h2 id="elemento-nombre">
+        Selecciona un elemento
+    </h2>
+
+    <div class="ficha-simbolo" id="elemento-simbolo">
+        —
+    </div>
+
+    <p id="elemento-numero"></p>
+
+    <p id="elemento-masa"></p>
+
+    <p id="elemento-categoria"></p>
+
+    <p id="elemento-grupo"></p>
+
+    <p id="elemento-periodo"></p>
+
+    <p id="elemento-estado"></p>
+
+    <p id="elemento-configuracion"></p>
+
+    <a id="elemento-articulo" href="#">
+        Ver artículo completo →
+    </a>
+
+</div>
+
+
+</main>
+
+
+    <!-- ==================================================
+         VOLVER
+         ================================================== -->
+
+    <p class="volver">
+
+        <a href="../index.html">
+            ← Volver a la página principal
+        </a>
+
+    </p>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         ================================================== -->
+
+    <script src="../script.js"></script>
+
+</body>
+
+</html>
