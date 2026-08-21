@@ -480,16 +480,16 @@ Zn: {
     articulo: "#"
 },
 
-Ga: {
-    simbolo: "Ga",
-    nombre: "Galio",
-    numero: 31,
-    masa: "69.723 u",
-    categoria: "Metal postransición",
-    grupo: 13,
+Ge: {
+    simbolo: "Ge",
+    nombre: "Germanio",
+    numero: 32,
+    masa: "72.630 u",
+    categoria: "Metaloide",
+    grupo: 14,
     periodo: 4,
     estado: "Sólido",
-    configuracion: "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p¹",
+    configuracion: "1s² 2s² 2p⁶ 3s² 3p⁶ 4s² 3d¹⁰ 4p²",
     articulo: "#"
 },
 
@@ -1587,11 +1587,11 @@ function mostrarElemento(simbolo) {
 /* Enciclostudio: contenido y actividades de la portada. */
 (() => {
     const seedArticles = [
-        { title: "El átomo: la unidad de la materia", subject: "Química", level: "Secundaria", summary: "Conoce protones, neutrones y electrones, y cómo explican las propiedades de la materia.", resource: "Articulos/atomo.html" },
-        { title: "Cómo medir el universo", subject: "Astronomía", level: "Primaria", summary: "Un recorrido por las escalas que usamos para comprender planetas, estrellas y galaxias." },
+        { title: "El átomo: la unidad de la materia", subject: "Química", level: "Secundaria", summary: "Conoce protones, neutrones y electrones, y cómo explican las propiedades de la materia.", resource: "atomo.html" },
+        { title: "El sistema solar", subject: "Astronomía", level: "Primaria", summary: "Explora planetas, distancias y preguntas para investigar el vecindario cósmico.", resource: "sistema-solar.html" },
         { title: "Primer sitio web con HTML", subject: "Programación", level: "Primaria", summary: "Construye la estructura de una página y entiende las etiquetas esenciales." },
-        { title: "Energía y movimiento", subject: "Física", level: "Secundaria", summary: "Relaciona fuerza, masa y aceleración mediante ejemplos cotidianos." },
-        { title: "Patrones y fracciones", subject: "Matemáticas", level: "Primaria", summary: "Representa partes de un todo y reconoce patrones numéricos." },
+        { title: "Enlaces químicos", subject: "Química", level: "Avanzado", summary: "Compara los enlaces covalente, iónico y metálico con argumentos basados en evidencia.", resource: "enlaces-quimicos.html" },
+        { title: "Moléculas: átomos que se unen", subject: "Química", level: "Secundaria", summary: "Entiende las fórmulas químicas y cómo los enlaces crean sustancias nuevas.", resource: "moleculas.html" },
         { title: "Placas tectónicas", subject: "Geología", level: "Avanzado", summary: "Explica cómo se forman terremotos, montañas y volcanes a partir de la dinámica terrestre." }
     ];
     const lessons = {
@@ -1613,7 +1613,7 @@ function mostrarElemento(simbolo) {
         container.innerHTML = lessons[level].map((lesson, index) => `<article class="lesson-card"><span class="lesson-number">0${index + 1}</span><div><p>${lesson[0]} · ${level}</p><h3>${lesson[1]}</h3><p>${lesson[2]}</p></div><a href="#biblioteca">Estudiar →</a></article>`).join("");
     }
     document.querySelectorAll(".level-tab").forEach(button => button.addEventListener("click", () => {
-        document.querySelectorAll(".level-tab").forEach(tab => tab.classList.remove("active")); button.classList.add("active"); renderLessons(button.dataset.level);
+        document.querySelectorAll(".level-tab").forEach(tab => { tab.classList.remove("active"); tab.setAttribute("aria-selected", "false"); }); button.classList.add("active"); button.setAttribute("aria-selected", "true"); renderLessons(button.dataset.level);
     }));
     renderLessons("primaria"); renderArticles();
     const search = () => {
@@ -1622,7 +1622,7 @@ function mostrarElemento(simbolo) {
         const query = input.value.trim().toLowerCase();
         if (!query) { results.innerHTML = ""; return; }
         const found = allArticles().filter(item => Object.values(item).join(" ").toLowerCase().includes(query));
-        results.innerHTML = found.length ? found.map(item => `<div class="search-result"><a href="#biblioteca"><strong>${safe(item.title)}</strong> · ${safe(item.subject)}</a></div>`).join("") : "<p>No encontramos resultados. Prueba con una materia o concepto más amplio.</p>";
+        results.innerHTML = found.length ? found.map(item => `<div class="search-result"><a href="${item.resource ? safe(item.resource) : "#biblioteca"}"><strong>${safe(item.title)}</strong> · ${safe(item.subject)}</a></div>`).join("") : "<p>No encontramos resultados. Prueba con una materia o concepto más amplio.</p>";
     };
     document.getElementById("searchButton")?.addEventListener("click", search);
     document.getElementById("searchInput")?.addEventListener("keydown", event => { if (event.key === "Enter") search(); });
@@ -1635,4 +1635,95 @@ function mostrarElemento(simbolo) {
     dialog?.querySelector(".close-dialog")?.addEventListener("click", () => dialog.close());
     document.getElementById("saveProfile")?.addEventListener("click", () => { const name = nameInput.value.trim(); localStorage.setItem("enciclostudio-name", name); document.getElementById("profileStatus").textContent = name ? `¡Listo, ${name}! Tu perfil se guardó en este navegador.` : "Escribe un nombre para guardar tu perfil."; });
     document.getElementById("articleEditor")?.addEventListener("submit", event => { event.preventDefault(); const values = Object.fromEntries(new FormData(event.currentTarget)); const custom = savedArticles(); custom.unshift(values); localStorage.setItem("enciclostudio-articles", JSON.stringify(custom)); document.getElementById("editorStatus").textContent = "Artículo añadido. Ya aparece en la biblioteca de inicio de este navegador."; event.currentTarget.reset(); });
+})();
+
+/* Tabla periódica avanzada: familias, ficha y modelo de Bohr. */
+(() => {
+    const superscripts = { "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4", "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9" };
+    const lanthanides = new Set(["La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu"]);
+    const actinides = new Set(["Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr"]);
+    const metalloids = new Set(["B","Si","Ge","As","Sb","Te"]);
+    const reactiveNonmetals = new Set(["H","C","N","O","P","S","Se","F","Cl","Br","I","At"]);
+    const postTransitionals = new Set(["Al","Ga","In","Sn","Tl","Pb","Bi","Po","Nh","Fl","Mc","Lv"]);
+    function familyOf(element) {
+        if (lanthanides.has(element.simbolo)) return ["lantanido", "Lantánido"];
+        if (actinides.has(element.simbolo)) return ["actinido", "Actinoide"];
+        if (element.numero >= 104) return ["desconocido", "Propiedades desconocidas"];
+        if (element.grupo === 18) return ["noble", "Gas noble"];
+        if (element.grupo === 1 && element.simbolo !== "H") return ["alcalino", "Metal alcalino"];
+        if (element.grupo === 2) return ["alcalinoterreo", "Metal alcalinotérreo"];
+        if (element.grupo >= 3 && element.grupo <= 12) return ["transicion", "Metal transicional"];
+        if (metalloids.has(element.simbolo)) return ["metaloide", "Metaloide"];
+        if (reactiveNonmetals.has(element.simbolo)) return ["no-metal", "No metal reactivo"];
+        if (postTransitionals.has(element.simbolo)) return ["postransicion", "Metal postransicional"];
+        return ["desconocido", "Propiedades desconocidas"];
+    }
+    function configurationFor(element) {
+        if (element.configuracion) return element.configuracion;
+        const orbitals = [["1s",2],["2s",2],["2p",6],["3s",2],["3p",6],["4s",2],["3d",10],["4p",6],["5s",2],["4d",10],["5p",6],["6s",2],["4f",14],["5d",10],["6p",6],["7s",2],["5f",14],["6d",10],["7p",6]];
+        let remaining = element.numero;
+        return orbitals.map(([orbital, capacity]) => { const electrons = Math.min(remaining, capacity); remaining -= electrons; return electrons ? `${orbital}${String(electrons).replace(/[0-9]/g, digit => "⁰¹²³⁴⁵⁶⁷⁸⁹"[digit])}` : ""; }).filter(Boolean).join(" ");
+    }
+    function shellsFor(element, configuration) {
+        const shells = [];
+        configuration.replace(/([1-7])[spdf]([⁰¹²³⁴⁵⁶⁷⁸⁹0-9]+)/g, (_, shell, quantity) => { const electrons = Number([...quantity].map(char => superscripts[char] ?? char).join("")); shells[Number(shell) - 1] = (shells[Number(shell) - 1] || 0) + electrons; });
+        if (shells.filter(Boolean).reduce((sum, value) => sum + value, 0) === element.numero) return shells.filter(Boolean);
+        const capacities = [2,8,18,32,32,18,8], fallback = []; let remaining = element.numero;
+        capacities.forEach(capacity => { if (remaining) { const used = Math.min(capacity, remaining); fallback.push(used); remaining -= used; } }); return fallback;
+    }
+    function drawBohr(element, shells) {
+        const model = document.getElementById("modelo-bohr"); if (!model) return;
+        model.innerHTML = `<div class="nucleus"><b>${element.simbolo}</b><small>${element.numero} p+</small></div>`;
+        shells.forEach((electrons, shellIndex) => {
+            const ring = document.createElement("div"); ring.className = "bohr-shell"; ring.style.setProperty("--ring", shellIndex + 1);
+            for (let index = 0; index < electrons; index += 1) { const electron = document.createElement("i"); electron.style.setProperty("--angle", `${(360 / electrons) * index}deg`); ring.appendChild(electron); }
+            model.appendChild(ring);
+        });
+        model.onclick = () => model.classList.toggle("tilted");
+        model.title = "Haz clic para girar el modelo";
+    }
+    window.mostrarElemento = function mostrarElementoAvanzado(simbolo) {
+        const element = elementos[simbolo]; if (!element) return;
+        const [familyKey, familyName] = familyOf(element), configuration = configurationFor(element), shells = shellsFor(element, configuration);
+        document.querySelectorAll(".elemento").forEach(button => button.classList.toggle("selected", button.querySelector("strong")?.textContent === simbolo));
+        const setText = (id, text) => { const node = document.getElementById(id); if (node) node.textContent = text; };
+        setText("elemento-nombre", `${element.nombre} (${element.simbolo})`); setText("elemento-simbolo", element.simbolo);
+        setText("elemento-numero", `Número atómico: ${element.numero} · protones: ${element.numero} · electrones: ${element.numero}`);
+        setText("elemento-masa", `Masa atómica: ${element.masa} · neutrones aprox.: ${Math.max(0, Math.round(parseFloat(element.masa) || element.numero) - element.numero)}`);
+        setText("elemento-categoria", `Familia: ${familyName}`); setText("elemento-grupo", `Grupo ${element.grupo ?? "—"} · período ${element.periodo ?? "—"}`);
+        setText("elemento-periodo", `Distribución por capas: ${shells.join(" · ")}`); setText("elemento-estado", `Estado a temperatura ambiente: ${element.estado || "desconocido"}`);
+        setText("elemento-configuracion", `Configuración electrónica: ${configuration}`); setText("bohr-resumen", `${element.nombre} tiene ${element.numero} electrones organizados en ${shells.length} capa${shells.length === 1 ? "" : "s"}. Haz clic en el modelo para girarlo.`);
+        const link = document.getElementById("elemento-articulo"); if (link) { link.href = `elemento.html?elemento=${encodeURIComponent(simbolo)}`; link.textContent = `Leer artículo completo sobre ${element.nombre} →`; }
+        drawBohr(element, shells);
+    };
+    document.querySelectorAll(".tabla-periodica .elemento, .tabla-series .elemento").forEach(button => {
+        const symbol = button.querySelector("strong")?.textContent?.trim(), element = elementos[symbol]; if (!element) return;
+        const [family] = familyOf(element); button.dataset.family = family; button.setAttribute("aria-label", `${element.nombre}, ${familyOf(element)[1]}, grupo ${element.grupo ?? "serie"}, período ${element.periodo ?? "serie"}`);
+    });
+    const articleTarget = document.getElementById("elementArticle");
+    if (articleTarget) {
+        const symbol = new URLSearchParams(location.search).get("elemento") || "H", element = elementos[symbol] || elementos.H, [familyKey, familyName] = familyOf(element), configuration = configurationFor(element), shells = shellsFor(element, configuration);
+        document.title = `${element.nombre} | Enciclostudio`; articleTarget.innerHTML = `<p class="eyebrow">ELEMENTO QUÍMICO · ${familyName.toUpperCase()}</p><h1>${element.nombre} <span class="article-symbol">${element.simbolo}</span></h1><p class="article-lead">${element.nombre} es el elemento de número atómico ${element.numero}. Pertenece a la familia de ${familyName.toLowerCase()} y se ubica en el ${element.periodo ? `período ${element.periodo}` : "bloque f"}.</p><div class="element-facts"><div><b>Número atómico</b><span>${element.numero}</span></div><div><b>Masa atómica</b><span>${element.masa}</span></div><div><b>Grupo</b><span>${element.grupo ?? "Lantánidos / actínidos"}</span></div><div><b>Estado</b><span>${element.estado || "Desconocido"}</span></div></div><section class="article-section"><h2>Estructura electrónica</h2><p>Configuración electrónica: <strong>${configuration}</strong>.</p><p>En el modelo de Bohr, sus electrones se distribuyen por capas como: <strong>${shells.join(" · ")}</strong>.</p><div id="modelo-bohr" class="bohr-model article-bohr"></div></section><section class="article-section"><h2>Cómo interpretar este elemento</h2><p>El número atómico indica cuántos protones tiene su núcleo. En un átomo neutro, ese número coincide con sus electrones. La posición en la tabla permite comparar su reactividad y propiedades con las de otros elementos de su familia.</p></section><p><a class="button primary" href="../Materias/tabla-periodica.html">← Volver a la tabla periódica</a></p>`;
+        drawBohr(element, shells);
+    }
+})();
+
+
+/* Mobile navigation for the editorial shell. */
+(() => {
+    const toggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("mobileMenu");
+    if (!toggle || !menu) return;
+    const setOpen = open => {
+        toggle.setAttribute("aria-expanded", String(open));
+        toggle.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+        menu.setAttribute("aria-hidden", String(!open));
+        menu.classList.toggle("is-open", open);
+        document.body.classList.toggle("no-scroll", open);
+    };
+    toggle.addEventListener("click", () => setOpen(toggle.getAttribute("aria-expanded") !== "true"));
+    menu.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setOpen(false)));
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") setOpen(false);
+    });
 })();

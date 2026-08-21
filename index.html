@@ -1,26 +1,154 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Enciclostudio: aprende ciencias y programación con artículos, clases y retos.">
-  <title>Enciclostudio | Aprende, explora y practica</title><link rel="stylesheet" href="estilos.css"><link rel="stylesheet" href="enciclostudio.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Enciclostudio: una enciclopedia online viva, simple y confiable para aprender ciencias y crear.">
+  <title>Enciclostudio | Una enciclopedia online más viva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="enciclostudio.css">
 </head>
 <body class="enciclostudio">
-  <header class="site-header"><a class="brand" href="index.html"><span>✦</span> Enciclostudio</a><nav aria-label="Navegación principal"><a href="#materias">Explorar</a><a href="#estudiar">Estudiar</a><a href="#biblioteca">Biblioteca</a><a href="#programacion">Programación</a></nav><button class="profile-button" id="openProfile" type="button">Mi perfil <span aria-hidden="true">→</span></button></header>
-  <main>
-    <section class="hero"><div><p class="eyebrow">CIENCIA · IDEAS · CREACIÓN</p><h1>Aprende con curiosidad.<br><em>Practica con propósito.</em></h1><p class="hero-copy">Una enciclopedia virtual para leer, entender y poner a prueba lo que aprendes: desde primaria hasta nivel avanzado.</p><div class="hero-actions"><a class="button primary" href="#estudiar">Comenzar a estudiar</a><a class="button ghost" href="#biblioteca">Leer artículos</a></div><dl class="mini-stats"><div><dt>6+</dt><dd>materias</dd></div><div><dt>3</dt><dd>niveles</dd></div><div><dt>∞</dt><dd>preguntas</dd></div></dl></div><aside class="hero-orbit" aria-label="Áreas de aprendizaje"><span>⚛</span><span>π</span><span>⌘</span><span>🧬</span><span>✦</span><strong>Tu espacio<br>para descubrir</strong></aside></section>
-    <section class="search-section" aria-label="Buscador"><label for="searchInput">¿Qué quieres descubrir hoy?</label><div class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Ej.: átomos, fracciones, sistema solar, HTML..."><button id="searchButton" type="button">Buscar</button></div><div id="searchResults" class="search-results" aria-live="polite"></div></section>
-    <section id="materias" class="section"><div class="section-heading"><p class="eyebrow">EXPLORA</p><h2>Una pregunta puede abrir un universo.</h2><p>Elige una materia y encuentra artículos, experiencias y rutas de aprendizaje.</p></div><div class="subject-grid"><a class="subject-card chemistry" href="Materias/quimica.html"><span>🧪</span><h3>Química</h3><p>Materia, átomos y reacciones.</p><b>Explorar →</b></a><a class="subject-card physics" href="#estudiar"><span>⚡</span><h3>Física</h3><p>Fuerzas, energía y movimiento.</p><b>Explorar →</b></a><a class="subject-card biology" href="#biblioteca"><span>🧬</span><h3>Biología</h3><p>La vida y sus sistemas.</p><b>Explorar →</b></a><a class="subject-card astronomy" href="#biblioteca"><span>✦</span><h3>Astronomía</h3><p>Planetas, estrellas y cosmos.</p><b>Explorar →</b></a><a class="subject-card math" href="#estudiar"><span>π</span><h3>Matemáticas</h3><p>Patrones, lógica y formas.</p><b>Explorar →</b></a><a class="subject-card geology" href="#biblioteca"><span>◒</span><h3>Geología</h3><p>La historia de la Tierra.</p><b>Explorar →</b></a></div></section>
-    <section id="estudiar" class="section study-section"><div class="section-heading"><p class="eyebrow">RUTAS DE ESTUDIO</p><h2>Aprende a tu ritmo</h2><p>Lecciones breves, ejercicios y progreso guardado en este dispositivo.</p></div><div class="level-tabs" role="tablist"><button class="level-tab active" data-level="primaria" type="button">Primaria</button><button class="level-tab" data-level="secundaria" type="button">Secundaria</button><button class="level-tab" data-level="avanzado" type="button">Avanzado</button></div><div id="lessonList" class="lesson-list"></div></section>
-    <section id="biblioteca" class="section library-section"><div class="section-heading"><p class="eyebrow">BIBLIOTECA</p><h2>Lee, profundiza y conecta ideas.</h2></div><div id="articleList" class="article-grid"></div><p class="editor-note">¿Quieres añadir un artículo sin modificar la página? Usa el <a href="editor.html">editor de artículos</a>.</p></section>
-    <section id="programacion" class="section code-section"><div><p class="eyebrow">LABORATORIO DIGITAL</p><h2>Programar también es crear.</h2><p>Aprende HTML, CSS, JavaScript, Python y modelado 3D con retos graduales y proyectos reales.</p><a class="button primary" href="#estudiar">Ver clases de programación</a></div><div class="code-window"><div><i></i><i></i><i></i><span>proyecto-enciclostudio</span></div><pre><code>&lt;h1&gt;Mi primer sitio&lt;/h1&gt;
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Enciclostudio, inicio"><span class="brand-mark" aria-hidden="true">●</span> Enciclostudio</a>
+    <nav aria-label="Navegación principal">
+      <a href="#materias">Explorar</a>
+      <a href="#estudiar">Estudiar</a>
+      <a href="#biblioteca">Biblioteca</a>
+      <a href="editor.html">Crear</a>
+    </nav>
+    <button class="profile-button" id="openProfile" type="button">Mi perfil</button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Abrir menú"><span></span></button>
+  </header>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#materias">Explorar materias</a>
+    <a href="#estudiar">Rutas de estudio</a>
+    <a href="#biblioteca">Biblioteca</a>
+    <a href="tabla-periodica.html">Tabla periódica</a>
+    <a href="editor.html">Añadir contenido</a>
+  </div>
+
+  <main class="site-main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Una enciclopedia online más viva,<br>más simple y más confiable</h1>
+        <p class="hero-copy">Creamos contenidos originales y de calidad para fomentar la curiosidad y potenciar el aprendizaje.</p>
+        <section class="search-section" aria-label="Buscador">
+          <label for="searchInput">¿Qué quieres descubrir hoy?</label>
+          <div class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="¿Qué quieres buscar?" autocomplete="off">
+            <button id="searchButton" type="button">Buscar</button>
+          </div>
+          <div id="searchResults" class="search-results" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section concept-day" id="concept-day" aria-labelledby="concept-day-title">
+      <div class="section-heading">
+        <p class="section-kicker">Concepto del día</p>
+        <h2 id="concept-day-title">Una idea breve puede cambiar la forma de mirar el mundo.</h2>
+        <p>Explora una explicación clara, conecta conceptos y sigue leyendo cuando quieras profundizar.</p>
+      </div>
+      <div class="daily-card">
+        <article>
+          <h3>El átomo</h3>
+          <p>La unidad fundamental de la materia está formada por un núcleo y una región donde se encuentran los electrones.</p>
+          <a href="atomo.html">Leer el artículo →</a>
+        </article>
+        <aside class="daily-aside">
+          <strong>Aprender es conectar.</strong>
+          <p>Cada artículo enlaza con otros temas, niveles y ejercicios para que puedas construir tu propio mapa de conocimiento.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="materias" class="section" aria-labelledby="materias-title">
+      <div class="section-heading">
+        <p class="section-kicker">Explora</p>
+        <h2 id="materias-title">Una pregunta puede abrir un universo.</h2>
+        <p>Elige una materia y encuentra artículos, experiencias y rutas de aprendizaje.</p>
+      </div>
+      <div class="subject-grid">
+        <a class="subject-card chemistry" href="quimica.html"><span aria-hidden="true">01</span><h3>Química</h3><p>Materia, átomos y reacciones.</p><b>Explorar →</b></a>
+        <a class="subject-card physics" href="#estudiar"><span aria-hidden="true">02</span><h3>Física</h3><p>Fuerzas, energía y movimiento.</p><b>Explorar →</b></a>
+        <a class="subject-card biology" href="#biblioteca"><span aria-hidden="true">03</span><h3>Biología</h3><p>La vida y sus sistemas.</p><b>Explorar →</b></a>
+        <a class="subject-card astronomy" href="sistema-solar.html"><span aria-hidden="true">04</span><h3>Astronomía</h3><p>Planetas, estrellas y cosmos.</p><b>Explorar →</b></a>
+        <a class="subject-card math" href="#estudiar"><span aria-hidden="true">05</span><h3>Matemáticas</h3><p>Patrones, lógica y formas.</p><b>Explorar →</b></a>
+        <a class="subject-card geology" href="#biblioteca"><span aria-hidden="true">06</span><h3>Geología</h3><p>La historia de la Tierra.</p><b>Explorar →</b></a>
+      </div>
+    </section>
+
+    <section id="estudiar" class="section study-section" aria-labelledby="study-title">
+      <div class="section-heading">
+        <p class="section-kicker">Rutas de estudio</p>
+        <h2 id="study-title">Aprende a tu ritmo.</h2>
+        <p>Lecciones breves, ejercicios y progreso guardado en este dispositivo.</p>
+      </div>
+      <div class="level-tabs" role="tablist" aria-label="Nivel educativo">
+        <button class="level-tab active" data-level="primaria" type="button" role="tab" aria-selected="true">Primaria</button>
+        <button class="level-tab" data-level="secundaria" type="button" role="tab" aria-selected="false">Secundaria</button>
+        <button class="level-tab" data-level="avanzado" type="button" role="tab" aria-selected="false">Avanzado</button>
+      </div>
+      <div id="lessonList" class="lesson-list"></div>
+    </section>
+
+    <section id="biblioteca" class="section library-section" aria-labelledby="library-title">
+      <div class="section-heading">
+        <p class="section-kicker">Biblioteca</p>
+        <h2 id="library-title">Lee, profundiza y conecta ideas.</h2>
+        <p>Artículos claros para empezar desde cero o volver a una pregunta que todavía te acompaña.</p>
+      </div>
+      <div id="articleList" class="article-grid"></div>
+      <p class="editor-note">¿Quieres añadir un artículo sin modificar la página? Usa el <a href="editor.html">editor de artículos</a>.</p>
+    </section>
+
+    <section id="programacion" class="section code-section" aria-labelledby="code-title">
+      <div>
+        <p class="section-kicker">Laboratorio digital</p>
+        <h2 id="code-title">Programar también es crear.</h2>
+        <p>Aprende HTML, CSS, JavaScript, Python y modelado 3D con retos graduales y proyectos reales.</p>
+        <a class="button" href="#estudiar">Ver clases de programación</a>
+      </div>
+      <div class="code-window" aria-label="Ejemplo de código">
+        <div><i></i><i></i><i></i><span>proyecto-enciclostudio</span></div>
+        <pre><code>&lt;h1&gt;Mi primer sitio&lt;/h1&gt;
 &lt;p&gt;Una idea que cobra vida.&lt;/p&gt;
 
-<span>const</span> aprender = <span>true</span>;</code></pre></div></section>
-    <section class="quiz-section"><div><p class="eyebrow">COMPRUEBA LO APRENDIDO</p><h2>Un reto rápido</h2><p id="quizQuestion">¿Qué partícula del átomo tiene carga negativa?</p></div><div id="quizOptions" class="quiz-options"></div><p id="quizFeedback" aria-live="polite"></p></section>
+<span>const</span> aprender = <span>true</span>;</code></pre>
+      </div>
+    </section>
+
+    <section class="quiz-section" aria-labelledby="quiz-title">
+      <div>
+        <p class="section-kicker">Comprueba lo aprendido</p>
+        <h2 id="quiz-title">Un reto rápido.</h2>
+        <p id="quizQuestion">¿Qué partícula del átomo tiene carga negativa?</p>
+      </div>
+      <div id="quizOptions" class="quiz-options"></div>
+      <p id="quizFeedback" aria-live="polite"></p>
+    </section>
   </main>
-  <footer><a class="brand" href="index.html"><span>✦</span> Enciclostudio</a><p>Conocimiento abierto para mentes curiosas.</p><a href="editor.html">Añadir contenido</a></footer>
-  <dialog id="profileDialog"><button class="close-dialog" aria-label="Cerrar" type="button">×</button><p class="eyebrow">TU PERFIL</p><h2>Guarda tu avance</h2><p>Este perfil se guarda solo en tu navegador. Para cuentas reales y compartidas, conecta el sitio a Supabase o Firebase al publicarlo.</p><label>Nombre <input id="profileName" maxlength="28" placeholder="Tu nombre"></label><button id="saveProfile" class="button primary" type="button">Guardar perfil</button><p id="profileStatus" aria-live="polite"></p></dialog>
+
+  <footer>
+    <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">●</span> Enciclostudio</a>
+    <p>Conocimiento abierto para mentes curiosas.</p>
+    <a href="editor.html">Añadir contenido</a>
+  </footer>
+
+  <dialog id="profileDialog">
+    <button class="close-dialog" aria-label="Cerrar" type="button">×</button>
+    <p class="section-kicker">Tu perfil</p>
+    <h2>Guarda tu avance.</h2>
+    <p>Este perfil se guarda solo en tu navegador. Para cuentas reales y compartidas, conecta el sitio a un servicio de autenticación al publicarlo.</p>
+    <label>Nombre <input id="profileName" maxlength="28" placeholder="Tu nombre"></label>
+    <button id="saveProfile" class="button" type="button">Guardar perfil</button>
+    <p id="profileStatus" aria-live="polite"></p>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>

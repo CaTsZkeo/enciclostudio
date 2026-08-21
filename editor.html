@@ -1,3 +1,37 @@
 <!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Editor de artículos | Enciclostudio</title><link rel="stylesheet" href="estilos.css"><link rel="stylesheet" href="enciclostudio.css"></head>
-<body class="enciclostudio"><header class="site-header"><a class="brand" href="index.html"><span>✦</span> Enciclostudio</a></header><main class="editor-page"><p class="eyebrow">HERRAMIENTA PARA EDITORES</p><h1>Añade un artículo</h1><p>Completa el formulario. El artículo se guardará en este navegador y aparecerá en la biblioteca de inicio. Para que sea público para todos, exporta los datos y súbelos con un CMS o una base de datos.</p><form id="articleEditor" class="article-form"><label>Título<input name="title" required placeholder="Ej.: El ciclo del agua"></label><label>Materia<select name="subject"><option>Química</option><option>Física</option><option>Biología</option><option>Astronomía</option><option>Matemáticas</option><option>Geología</option><option>Programación</option></select></label><label>Nivel<select name="level"><option>Primaria</option><option>Secundaria</option><option>Avanzado</option></select></label><label>Resumen<textarea name="summary" required rows="4" placeholder="Explica la idea principal en dos o tres frases."></textarea></label><label>Enlace a PDF o documento (opcional)<input name="resource" type="url" placeholder="https://..."></label><button class="button primary" type="submit">Añadir a mi biblioteca</button></form><p id="editorStatus" aria-live="polite"></p><p><a href="index.html">← Volver al inicio</a></p></main><script src="script.js"></script></body></html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Editor de artículos | Enciclostudio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link rel="stylesheet" href="enciclostudio.css">
+</head>
+<body class="enciclostudio">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Enciclostudio, inicio"><span class="brand-mark" aria-hidden="true">●</span> Enciclostudio</a>
+    <nav aria-label="Navegación del editor"><a href="index.html#biblioteca">Biblioteca</a><a href="index.html#estudiar">Estudiar</a><a href="quimica.html">Materias</a></nav>
+    <a class="profile-button" href="index.html">Inicio</a>
+  </header>
+  <main class="editor-page">
+    <p class="section-kicker">Herramienta para editores</p>
+    <h1>Añade un artículo.</h1>
+    <p>Completa el formulario. El artículo se guardará en este navegador y aparecerá en la biblioteca de inicio. Para que sea público para todos, exporta los datos y súbelos con un CMS o una base de datos.</p>
+    <form id="articleEditor" class="article-form">
+      <label>Título<input name="title" required placeholder="Ej.: El ciclo del agua"></label>
+      <label>Materia<select name="subject"><option>Química</option><option>Física</option><option>Biología</option><option>Astronomía</option><option>Matemáticas</option><option>Geología</option><option>Programación</option></select></label>
+      <label>Nivel<select name="level"><option>Primaria</option><option>Secundaria</option><option>Avanzado</option></select></label>
+      <label>Resumen<textarea name="summary" required rows="4" placeholder="Explica la idea principal en dos o tres frases."></textarea></label>
+      <label>Enlace a PDF o documento (opcional)<input name="resource" type="url" placeholder="https://..."></label>
+      <button class="button" type="submit">Añadir a mi biblioteca</button>
+    </form>
+    <p id="editorStatus" aria-live="polite"></p>
+    <p><a href="index.html">← Volver al inicio</a></p>
+  </main>
+  <footer><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">●</span> Enciclostudio</a><p>Conocimiento abierto para mentes curiosas.</p><a href="index.html#biblioteca">Biblioteca</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
