@@ -23,3 +23,13 @@
 ## Importante
 
 Los perfiles y artículos añadidos desde `editor.html` se guardan actualmente con `localStorage`: son una demostración y solo aparecen en el mismo navegador. Para cuentas con contraseña, perfiles compartidos y edición pública se requiere un backend como Supabase o Firebase; no se deben guardar contraseñas en archivos HTML o JavaScript.
+
+## Uso sin conexión
+
+La versión actual incluye soporte PWA con `manifest.json`, `service-worker.js`, `offline.js` e `icon.svg`. Sirve el proyecto desde `localhost` o mediante HTTPS; al abrirlo con un navegador compatible, el botón **Instalar para usar sin internet** aparece en el pie de página cuando el navegador habilita la instalación. También puede utilizarse la opción de instalación del menú del navegador.
+
+La primera apertura debe hacerse con conexión para precargar las páginas, estilos y scripts. Después de completar el registro del service worker, la aplicación puede abrirse sin internet y consultar los artículos que hayan sido precargados. Si se modifican archivos, aumenta la versión `CACHE_NAME` en `service-worker.js` para forzar una nueva caché en la siguiente visita.
+
+## Tipografía Nexa
+
+El repositorio prioriza `Nexa` en la pila CSS, pero no incluye archivos de fuente sin licencia. Para usar Nexa Heavy o Nexa Bold como fuente web real, incorpora los archivos WOFF2 adquiridos con una licencia Web de Fontfabric y añade las declaraciones `@font-face` en `ilustraciones.css`. Hasta entonces, Montserrat funciona como alternativa geométrica cargada desde Google Fonts.

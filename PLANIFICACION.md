@@ -55,3 +55,9 @@ La capa `ilustraciones.css` amplía el sistema base con una paleta de violeta pr
 La portada contiene un SVG hero con planeta, órbitas, satélite y estrellas, además de pequeños SVGs temáticos para Química, Física, Biología, Astronomía, Matemáticas y Geología. Para añadir un nuevo dibujo, usa una vista `100 x 70`, clases `.fill-main`, `.fill-dark`, `.fill-light` y `.stroke-main`, y colócalo dentro de `.card-illustration`. No insertes texto largo dentro de SVGs; los títulos y descripciones deben permanecer como HTML accesible.
 
 Los artículos reciben formas decorativas mediante pseudo-elementos y conservan una superficie de lectura clara. Si se crea una nueva sección, se deben reutilizar `--violet`, `--teal`, `--yellow`, `--pink`, `--orange`, `--blue`, `--paper` y `--ink` en vez de introducir colores aislados.
+
+## Tipografía y uso sin conexión
+
+La pila visual prioriza `Nexa` en `ilustraciones.css`, seguida de `Montserrat`, `Century Gothic` y `Arial`. Nexa es una fuente comercial de Fontfabric: para incrustar sus archivos reales en CSS hace falta una licencia Web de Fontfabric, por lo que el repositorio no incluye archivos Nexa no autorizados. Las páginas cargan Montserrat como fallback geométrico hasta que el propietario del proyecto incorpore los archivos WOFF2 adquiridos y añada los `@font-face` correspondientes.
+
+El sitio incluye `manifest.json`, `service-worker.js`, `offline.js` e `icon.svg`. En un servidor HTTPS o en `localhost`, los navegadores compatibles pueden instalarlo como aplicación y precargar las páginas y estilos para consultar el contenido sin internet. La primera visita debe realizarse con conexión para que el service worker complete su caché; una vez instalada, la opción aparece como botón en el pie de página cuando el navegador ofrece el evento de instalación.

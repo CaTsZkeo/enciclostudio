@@ -221,3 +221,91 @@ footer > a:not(.brand) { color: var(--violet); }
   .editor-page::before { right: -110px; width: 150px; height: 150px; }
   .card-illustration { width: 72px; height: 54px; }
 }
+
+/* Nexa encabeza la pila tipográfica cuando existe una licencia web instalada.
+   Montserrat/Century Gothic funcionan como fallback geométrico hasta incorporar el archivo web autorizado. */
+:root {
+  --font-geometric: "Nexa", "Montserrat", "Century Gothic", Arial, sans-serif;
+  --font-sans: var(--font-geometric);
+  --font-serif: var(--font-geometric);
+}
+body,
+button,
+input,
+select,
+textarea { font-family: var(--font-geometric); }
+.enciclostudio h1,
+.enciclostudio h2,
+.enciclostudio h3,
+.enciclostudio h4,
+.enciclostudio .section-kicker,
+.enciclostudio .eyebrow { font-family: var(--font-geometric); font-weight: 800; letter-spacing: -.035em; }
+
+.article-visual {
+  display: grid;
+  place-items: center;
+  width: min(100%, 620px);
+  min-height: 170px;
+  margin: 26px 0 44px;
+  padding: 20px 30px;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--ink);
+  box-shadow: 0 8px 0 rgba(59, 32, 124, .16);
+}
+.article-visual svg { display: block; width: 100%; max-width: 460px; height: auto; overflow: visible; }
+.article-visual .orbit { fill: none; stroke: var(--teal); stroke-width: 4; stroke-linecap: round; opacity: .85; }
+.article-visual .core { fill: var(--pink); stroke: var(--yellow); stroke-width: 5; }
+.article-visual .particle.teal { fill: var(--teal); }
+.article-visual .particle.yellow { fill: var(--yellow); }
+.article-visual .particle.pink { fill: var(--pink); }
+.article-visual .accent { fill: var(--teal); }
+.article-visual .dark { fill: var(--ink-2); }
+.article-visual .light,
+.article-visual .light-dot { fill: var(--yellow); }
+.article-visual .teal-fill { fill: var(--teal); }
+.article-visual .yellow-fill { fill: var(--yellow); }
+.article-visual .pink-fill { fill: var(--pink); }
+.article-visual .dark-stroke { fill: none; stroke: var(--white); stroke-width: 5; stroke-linecap: round; }
+.article-visual .planet { fill: var(--yellow); }
+.article-visual .planet-shadow { fill: var(--orange); }
+.article-visual .star-shape { fill: var(--pink); }
+.article-visual .star-body { fill: var(--yellow); }
+.article-visual .star-glow { fill: none; stroke: var(--orange); stroke-width: 10; opacity: .65; }
+.article-visual .ray { fill: none; stroke: var(--teal); stroke-width: 6; stroke-linecap: round; }
+.article-visual .trail { fill: none; stroke: var(--teal); stroke-width: 9; stroke-linecap: round; }
+.article-visual .trail.thin { stroke: var(--yellow); stroke-width: 5; }
+.article-visual .meteor { fill: var(--pink); stroke: var(--yellow); stroke-width: 4; }
+.article-visual .planet-small { fill: var(--pink); stroke: var(--yellow); stroke-width: 4; }
+.article-visual .panel { fill: var(--blue); stroke: var(--white); stroke-width: 4; }
+.article-visual .panel-line { fill: none; stroke: var(--ink); stroke-width: 3; opacity: .7; }
+.article-visual .signal { fill: none; stroke: var(--teal); stroke-width: 4; stroke-linecap: round; }
+.article-visual .signal-dot { fill: var(--yellow); }
+.article-visual .comet-tail { fill: var(--teal); opacity: .9; }
+.article-visual .comet-head { fill: var(--yellow); stroke: var(--pink); stroke-width: 5; }
+.article-visual .spark { fill: var(--pink); }
+.article-visual .asteroid-body { fill: var(--orange); stroke: var(--yellow); stroke-width: 5; }
+.article-visual .crater { fill: var(--pink); }
+.article-visual .crater-small { fill: var(--teal); }
+
+@media (max-width: 760px) {
+  .article-visual { min-height: 135px; margin-bottom: 30px; padding: 16px 18px; }
+}
+
+.install-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  margin-top: 8px;
+  padding: 9px 15px;
+  border: 2px solid var(--teal);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--teal);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.install-button:hover { background: var(--teal); color: var(--ink); }
+.install-button:active { transform: scale(.97); }

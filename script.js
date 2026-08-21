@@ -5,7 +5,7 @@ const articulos = [
         descripcion: "Unidad fundamental de la materia.",
         enlace: "Articulos/atomo.html"
     },
-    
+
     {
         titulo: "Protón",
         descripcion: "Partícula subatómica con carga eléctrica positiva.",
@@ -29,7 +29,7 @@ const articulos = [
         descripcion: "Introducción a las principales partículas que forman parte de la estructura del átomo.",
         enlace: "Articulos/particulas-subatomicas.html"
     },
- 
+
     {
         titulo: "Tabla periódica",
         descripcion: "Organización de los elementos químicos según su número atómico y sus propiedades.",
@@ -1587,13 +1587,259 @@ function mostrarElemento(simbolo) {
 /* Enciclostudio: contenido y actividades de la portada. */
 (() => {
     const seedArticles = [
-        { title: "El átomo: la unidad de la materia", subject: "Química", level: "Secundaria", summary: "Conoce protones, neutrones y electrones, y cómo explican las propiedades de la materia.", resource: "atomo.html" },
-        { title: "El sistema solar", subject: "Astronomía", level: "Primaria", summary: "Explora planetas, distancias y preguntas para investigar el vecindario cósmico.", resource: "sistema-solar.html" },
-        { title: "Primer sitio web con HTML", subject: "Programación", level: "Primaria", summary: "Construye la estructura de una página y entiende las etiquetas esenciales." },
-        { title: "Enlaces químicos", subject: "Química", level: "Avanzado", summary: "Compara los enlaces covalente, iónico y metálico con argumentos basados en evidencia.", resource: "enlaces-quimicos.html" },
-        { title: "Moléculas: átomos que se unen", subject: "Química", level: "Secundaria", summary: "Entiende las fórmulas químicas y cómo los enlaces crean sustancias nuevas.", resource: "moleculas.html" },
-        { title: "Placas tectónicas", subject: "Geología", level: "Avanzado", summary: "Explica cómo se forman terremotos, montañas y volcanes a partir de la dinámica terrestre." }
-    ];
+        {
+                "title": "El átomo: la unidad de la materia",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "Conoce protones, neutrones y electrones, y cómo explican las propiedades de la materia.",
+                "resource": "atomo.html"
+        },
+        {
+                "title": "El sistema solar",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Explora planetas, distancias y preguntas para investigar el vecindario cósmico.",
+                "resource": "sistema-solar.html"
+        },
+        {
+                "title": "Enlaces químicos",
+                "subject": "Química",
+                "level": "Avanzado",
+                "summary": "Compara los enlaces covalente, iónico y metálico con argumentos basados en evidencia.",
+                "resource": "enlaces-quimicos.html"
+        },
+        {
+                "title": "Moléculas: átomos que se unen",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "Entiende las fórmulas químicas y cómo los enlaces crean sustancias nuevas.",
+                "resource": "moleculas.html"
+        },
+        {
+                "title": "Materia",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "La materia puede estudiarse por sus propiedades, su composición y los cambios que experimenta.",
+                "resource": "materia.html"
+        },
+        {
+                "title": "Estados de la materia",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "Un sólido conserva su forma, un líquido fluye y un gas ocupa el recipiente; las partículas explican esas diferencias.",
+                "resource": "estados-de-la-materia.html"
+        },
+        {
+                "title": "Propiedades de la materia",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "No basta con decir que algo “parece” pesado o brillante: una propiedad útil se observa o se mide de manera reproducible.",
+                "resource": "propiedades-de-la-materia.html"
+        },
+        {
+                "title": "Sustancias puras y mezclas",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "Una sustancia pura tiene composición constante; una mezcla reúne sustancias que pueden separarse por métodos físicos.",
+                "resource": "sustancias-puras-y-mezclas.html"
+        },
+        {
+                "title": "Cambios físicos y químicos",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "Derretir hielo es un cambio físico. Oxidar hierro o quemar madera son cambios químicos porque aparece una composición diferente.",
+                "resource": "cambios-fisicos-y-quimicos.html"
+        },
+        {
+                "title": "Reacciones químicas",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "En una ecuación química, los reactivos se transforman en productos sin que desaparezcan los átomos.",
+                "resource": "reacciones-quimicas.html"
+        },
+        {
+                "title": "Ácidos y bases",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "La escala de pH ayuda a describir la acidez de una disolución, pero una medición siempre depende de las condiciones del experimento.",
+                "resource": "acidos-y-bases.html"
+        },
+        {
+                "title": "Soluciones químicas",
+                "subject": "Química",
+                "level": "Secundaria",
+                "summary": "La concentración conecta la cantidad de soluto con el volumen o la masa de la solución.",
+                "resource": "soluciones-quimicas.html"
+        },
+        {
+                "title": "Astros",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Mirar el cielo es reconocer una colección de mundos, estrellas, restos rocosos y nubes de gas que se relacionan por la gravedad.",
+                "resource": "astros.html"
+        },
+        {
+                "title": "Astros del sistema solar",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "El Sol domina la arquitectura del sistema solar, pero cada cuerpo aporta una historia diferente.",
+                "resource": "astros-del-sistema-solar.html"
+        },
+        {
+                "title": "Planeta: ¿qué es un planeta?",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Planeta no significa simplemente “una esfera en el espacio”: también importa cómo se mueve y qué objetos comparte con su órbita.",
+                "resource": "planeta-que-es-un-planeta.html"
+        },
+        {
+                "title": "Estrellas",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "La luz de una estrella cuenta una historia sobre su temperatura, composición, edad y distancia.",
+                "resource": "estrellas.html"
+        },
+        {
+                "title": "Tipos de estrellas",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "Una clasificación no es una caja permanente: una estrella puede cambiar de tipo a medida que evoluciona.",
+                "resource": "tipos-de-estrellas.html"
+        },
+        {
+                "title": "Características de las estrellas",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "La masa es una de las claves principales: influye en cuánto vive una estrella y en cómo termina su evolución.",
+                "resource": "caracteristicas-de-las-estrellas.html"
+        },
+        {
+                "title": "Estrellas fugaces",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Una raya rápida de luz puede ser un diminuto fragmento de roca que se calienta y se desintegra en el aire.",
+                "resource": "estrellas-fugaces.html"
+        },
+        {
+                "title": "Lluvia de estrellas",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Las partículas entran en la atmósfera desde zonas de la órbita terrestre que se repiten cada año.",
+                "resource": "lluvia-de-estrellas.html"
+        },
+        {
+                "title": "Satélites naturales: ¿qué son?",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "La Luna es el satélite natural de la Tierra, pero el sistema solar contiene cientos de lunas con historias muy diferentes.",
+                "resource": "satelites-naturales-que-son.html"
+        },
+        {
+                "title": "Características y tipos de satélites naturales",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "No existe una sola forma de ser luna: la composición, el tamaño y la órbita cuentan parte de su origen.",
+                "resource": "caracteristicas-y-tipos-de-satelites-naturales.html"
+        },
+        {
+                "title": "Satélites artificiales: ¿qué son?",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Estos dispositivos convierten una órbita en una herramienta para observar, comunicar, medir y explorar.",
+                "resource": "satelites-artificiales-que-son.html"
+        },
+        {
+                "title": "Cometas",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Cuando se acerca al Sol, parte de sus hielos se transforma en gas y crea una envoltura luminosa y una cola.",
+                "resource": "cometas.html"
+        },
+        {
+                "title": "Tipos de cometas",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "La frecuencia de regreso ofrece pistas sobre la región del sistema solar donde un cometa pasó la mayor parte de su vida.",
+                "resource": "tipos-de-cometas.html"
+        },
+        {
+                "title": "Partes de un cometa",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Núcleo, coma y cola son nombres para regiones distintas, no para piezas rígidas de una máquina.",
+                "resource": "partes-de-un-cometa.html"
+        },
+        {
+                "title": "Características de un cometa",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "Un cometa parece crecer al acercarse al Sol y volver a apagarse cuando se aleja.",
+                "resource": "caracteristicas-de-un-cometa.html"
+        },
+        {
+                "title": "Ejemplos de cometas",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Cada cometa es una cápsula de material antiguo que permite investigar los primeros tiempos del sistema solar.",
+                "resource": "ejemplos-de-cometas.html"
+        },
+        {
+                "title": "Cometa Halley",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Halley es especial porque distintas culturas lo registraron durante siglos y porque su regreso puede predecirse.",
+                "resource": "cometa-halley.html"
+        },
+        {
+                "title": "Asteroides",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "No son estrellas pequeñas: son restos sólidos que reflejan la luz del Sol.",
+                "resource": "asteroides.html"
+        },
+        {
+                "title": "¿Qué es un asteroide?",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Su forma irregular suele revelar que su gravedad no alcanza para convertirlo en una esfera.",
+                "resource": "que-es-un-asteroide.html"
+        },
+        {
+                "title": "Tipos de asteroides",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "Las familias de asteroides comparten rasgos porque proceden de colisiones o de regiones comunes.",
+                "resource": "tipos-de-asteroides.html"
+        },
+        {
+                "title": "Características de los asteroides",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "Un asteroide puede parecer una roca quieta, pero está girando y viajando a gran velocidad por el espacio.",
+                "resource": "caracteristicas-de-los-asteroides.html"
+        },
+        {
+                "title": "Asteroides y cometas: diferencias y semejanzas",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "Ambos son restos de la formación del sistema solar; la diferencia más visible es que los cometas pueden desarrollar coma y cola.",
+                "resource": "asteroides-y-cometas.html"
+        },
+        {
+                "title": "¿De dónde vienen los asteroides?",
+                "subject": "Astronomía",
+                "level": "Secundaria",
+                "summary": "No son piezas de un planeta que nunca llegó a formarse: también pueden ser restos de cuerpos que se rompieron.",
+                "resource": "de-donde-vienen-los-asteroides.html"
+        },
+        {
+                "title": "Cinturón de asteroides",
+                "subject": "Astronomía",
+                "level": "Primaria",
+                "summary": "Aunque se dibuja como una franja compacta, la distancia entre los asteroides suele ser enorme.",
+                "resource": "cinturon-de-asteroides.html"
+        }
+];
     const lessons = {
         primaria: [["Ciencias", "El ciclo del agua", "Lee, observa y ordena las etapas."], ["Matemáticas", "Fracciones visuales", "Aprende con dibujos y ejercicios."], ["Programación", "Mi primera página HTML", "Crea un título, un texto y un enlace."]],
         secundaria: [["Química", "Átomos y elementos", "Relaciona estructura atómica y tabla periódica."], ["Física", "Fuerzas en acción", "Resuelve retos de movimiento."], ["Programación", "Diseña con CSS", "Da color y estructura a un sitio web."]],

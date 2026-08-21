@@ -1,0 +1,19 @@
+{
+  "name": "Enciclostudio",
+  "short_name": "Enciclostudio",
+  "lang": "es",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff8e8",
+  "theme_color": "#171735",
+  "description": "Enciclopedia educativa ilustrada para aprender sin conexión.",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
