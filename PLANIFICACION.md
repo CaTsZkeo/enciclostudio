@@ -47,3 +47,11 @@ El perfil y los artículos creados desde el editor se guardan en `localStorage` 
 ## Publicación
 
 La versión es estática y puede publicarse en GitHub Pages, Netlify Drop o cualquier servidor de archivos estáticos. Si se publica bajo una subruta, se deben revisar los enlaces relativos y la ruta del fondo `assets/hero-forest.jpg`. La persistencia local seguirá siendo por navegador hasta que se incorpore un backend.
+
+## Dirección visual ilustrada
+
+La capa `ilustraciones.css` amplía el sistema base con una paleta de violeta profundo, turquesa, amarillo, rosa, naranja y azul sobre papel crema. Las formas deben mantenerse geométricas, redondeadas y simples, con sombras cortas y contrastes claros. La referencia es una **familia visual educativa original**: no se deben copiar personajes, composiciones ni recursos gráficos específicos de terceros.
+
+La portada contiene un SVG hero con planeta, órbitas, satélite y estrellas, además de pequeños SVGs temáticos para Química, Física, Biología, Astronomía, Matemáticas y Geología. Para añadir un nuevo dibujo, usa una vista `100 x 70`, clases `.fill-main`, `.fill-dark`, `.fill-light` y `.stroke-main`, y colócalo dentro de `.card-illustration`. No insertes texto largo dentro de SVGs; los títulos y descripciones deben permanecer como HTML accesible.
+
+Los artículos reciben formas decorativas mediante pseudo-elementos y conservan una superficie de lectura clara. Si se crea una nueva sección, se deben reutilizar `--violet`, `--teal`, `--yellow`, `--pink`, `--orange`, `--blue`, `--paper` y `--ink` en vez de introducir colores aislados.
