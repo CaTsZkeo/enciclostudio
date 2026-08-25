@@ -1846,7 +1846,26 @@ function mostrarElemento(simbolo) {
         avanzado: [["Astronomía", "Evolución estelar", "Analiza el ciclo de vida de una estrella."], ["Matemáticas", "Funciones y gráficas", "Modela relaciones entre variables."], ["Programación", "JavaScript interactivo", "Añade eventos, datos y lógica a la web."]]
     };
     const savedArticles = () => JSON.parse(localStorage.getItem("enciclostudio-articles") || "[]");
-    const allArticles = () => [...savedArticles(), ...seedArticles];
+    const normalizeArticleRoute = value => String(value || "").split("#")[0].split("?")[0].replace(/^(\.\.\/)+/, "").replace(/^Articulos\//i, "").replace(/^materias\//i, "").toLowerCase();
+    const centralCatalogEnabled = () => globalThis.ENCICLOSTUDIO_USE_CENTRAL_CATALOG !== false;
+    const centralStaticArticles = () => {
+        if (!centralCatalogEnabled()) return [];
+        try {
+            const catalog = globalThis.EnciclostudioCatalog;
+            const articles = catalog?.getLegacyArticles?.();
+            return Array.isArray(articles) && articles.length ? articles : [];
+        } catch (error) {
+            return [];
+        }
+    };
+    const staticArticlesWithFallback = () => {
+        const central = centralStaticArticles();
+        if (!central.length) return [...seedArticles];
+        const representedRoutes = new Set(central.map(article => normalizeArticleRoute(article.resource)));
+        const missingSeedArticles = seedArticles.filter(article => !representedRoutes.has(normalizeArticleRoute(article.resource)));
+        return [...central, ...missingSeedArticles];
+    };
+    const allArticles = () => [...savedArticles(), ...staticArticlesWithFallback()];
     const safe = value => String(value || "").replace(/[&<>\"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"})[character]);
     function renderArticles(items = allArticles()) {
         const container = document.getElementById("articleList");
