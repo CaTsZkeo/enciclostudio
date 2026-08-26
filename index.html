@@ -156,10 +156,24 @@
 </div>
 <p aria-live="polite" id="authSubmitStatus"></p>
 <p hidden="" id="authIdentity">Identidad autenticada: <code id="authUserId"></code></p>
+<section aria-labelledby="remoteProfileTitle" class="remote-profile-panel" hidden="" id="remoteProfilePanel">
+<p class="section-kicker">Perfil remoto opcional</p>
+<h4 id="remoteProfileTitle">Datos públicos de tu cuenta</h4>
+<p>Este perfil se vincula a tu identidad autenticada. El nombre local solo se usa como borrador cuando tú lo solicitas.</p>
+<button class="button" id="useLocalProfileName" type="button">Usar nombre local como borrador</button>
+<label>Nombre público <input id="remoteProfileDisplayName" maxlength="80" placeholder="Cómo quieres aparecer"/></label>
+<label>Avatar (URL) <input id="remoteProfileAvatar" inputmode="url" maxlength="500" placeholder="https://…" type="url"/></label>
+<label>Biografía <textarea id="remoteProfileBio" maxlength="500" placeholder="Una breve presentación" rows="3"></textarea></label>
+<div class="auth-actions">
+<button class="button" id="loadRemoteProfile" type="button">Cargar perfil remoto</button>
+<button class="button" id="saveRemoteProfile" type="button">Guardar perfil remoto</button>
+</div>
+<p aria-live="polite" id="remoteProfileStatus"></p>
+</section>
 </section>
 </dialog>
 <script src="catalogo-articulos.js"></script>
 <script src="script.js"></script>
 <script src="offline.js"></script>
-<script src="auth.js" type="module"></script></body>
+<script src="auth.js?step73=profile-read-fix-20260826062000" type="module"></script></body>
 </html>
