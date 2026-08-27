@@ -170,10 +170,29 @@
 </div>
 <p aria-live="polite" id="remoteProfileStatus"></p>
 </section>
+<section aria-labelledby="remoteArticlesTitle" class="remote-articles-panel" hidden="" id="remoteArticlesPanel">
+<p class="section-kicker">Artículos remotos opcionales</p>
+<h4 id="remoteArticlesTitle">Mis artículos remotos</h4>
+<p>Este panel es una demostración aislada. No sustituye el editor local ni la biblioteca actual.</p>
+<form id="remoteArticleForm">
+<label>Título <input id="remoteArticleTitle" maxlength="120" required="" value="Artículo remoto de prueba"/></label>
+<label>Materia <input id="remoteArticleSubject" maxlength="80" required="" value="Educación"/></label>
+<label>Nivel <input id="remoteArticleLevel" maxlength="40" required="" value="Secundaria"/></label>
+<label>Resumen <textarea id="remoteArticleSummary" maxlength="500" required="" rows="3">Artículo creado para validar el modelo remoto de Enciclostudio.</textarea></label>
+<label>Recurso (opcional) <input id="remoteArticleResource" inputmode="url" maxlength="500" placeholder="https://…" type="text"/></label>
+<div class="auth-actions">
+<button class="button" id="remoteArticleSave" type="submit">Crear artículo remoto de prueba</button>
+<button class="button" id="remoteArticleReset" type="button">Limpiar formulario</button>
+<button class="button" id="remoteArticlesRefresh" type="button">Cargar mis artículos</button>
+</div>
+</form>
+<div aria-live="polite" id="remoteArticlesList"></div>
+<p aria-live="polite" id="remoteArticlesStatus"></p>
+</section>
 </section>
 </dialog>
 <script src="catalogo-articulos.js"></script>
 <script src="script.js"></script>
 <script src="offline.js"></script>
-<script src="auth.js?step73=profile-read-fix-20260826062000" type="module"></script></body>
+<script src="auth.js?step74=articles-uuid-cache-bust-20260826200000" type="module"></script></body>
 </html>

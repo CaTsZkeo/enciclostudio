@@ -30,8 +30,23 @@ const saveRemoteProfileButton = document.getElementById("saveRemoteProfile");
 const remoteProfileStatus = document.getElementById("remoteProfileStatus");
 
 const PROFILE_COLUMNS = "user_id,display_name,avatar,bio,created_at,updated_at";
+const REMOTE_ARTICLE_COLUMNS = "id,owner_id,title,subject,level,summary,content,resource,status,created_at,updated_at,published_at,content_type";
+const REMOTE_ARTICLE_LIST_COLUMNS = "id,owner_id,title,subject,level,summary,resource,status,content_type";
+const remoteArticlesPanel = document.getElementById("remoteArticlesPanel");
+const remoteArticleForm = document.getElementById("remoteArticleForm");
+const remoteArticleTitle = document.getElementById("remoteArticleTitle");
+const remoteArticleSubject = document.getElementById("remoteArticleSubject");
+const remoteArticleLevel = document.getElementById("remoteArticleLevel");
+const remoteArticleSummary = document.getElementById("remoteArticleSummary");
+const remoteArticleResource = document.getElementById("remoteArticleResource");
+const remoteArticleSave = document.getElementById("remoteArticleSave");
+const remoteArticleReset = document.getElementById("remoteArticleReset");
+const remoteArticlesRefresh = document.getElementById("remoteArticlesRefresh");
+const remoteArticlesList = document.getElementById("remoteArticlesList");
+const remoteArticlesStatus = document.getElementById("remoteArticlesStatus");
 let currentRemoteProfile = null;
 let remoteProfileRequestId = 0;
+let currentRemoteArticleId = null;
 
 const setMessage = (message, isError = false) => {
     if (!authStatus) return;
@@ -59,6 +74,79 @@ const clearRemoteProfileForm = () => {
     setRemoteProfileMessage("");
 };
 
+const setRemoteArticlesMessage = (message, isError = false) => {
+    if (!remoteArticlesStatus) return;
+    remoteArticlesStatus.textContent = message;
+    remoteArticlesStatus.dataset.state = isError ? "error" : "ready";
+};
+
+const clearRemoteArticleForm = () => {
+    currentRemoteArticleId = null;
+    remoteArticleForm?.reset();
+    if (remoteArticleSave) remoteArticleSave.textContent = "Crear artículo remoto de prueba";
+};
+
+const clearRemoteArticles = () => {
+    clearRemoteArticleForm();
+    remoteArticlesList?.replaceChildren();
+    setRemoteArticlesMessage("");
+};
+
+const normalizeRemoteResource = value => {
+    const resource = String(value || "").trim();
+    if (!resource) return null;
+    if (resource.startsWith("http://") || resource.startsWith("https://") || /^(?:\.{0,2}\/)?[\w./%-]+(?:\?[^\s]*)?(?:#[^\s]*)?$/i.test(resource)) return resource;
+    return null;
+};
+
+const getRemoteArticleValues = () => ({
+    title: remoteArticleTitle?.value.trim() || "",
+    subject: remoteArticleSubject?.value.trim() || "",
+    level: remoteArticleLevel?.value.trim() || "",
+    summary: remoteArticleSummary?.value.trim() || "",
+    resource: normalizeRemoteResource(remoteArticleResource?.value)
+});
+
+const renderRemoteArticles = articles => {
+    if (!remoteArticlesList) return;
+    remoteArticlesList.replaceChildren();
+    if (!articles.length) return;
+    articles.forEach(article => {
+        const item = document.createElement("article");
+        item.className = "remote-article-item";
+        const title = document.createElement("h5");
+        title.textContent = article.title;
+        const meta = document.createElement("p");
+        meta.textContent = `${article.subject} · ${article.level} · ${article.status} · ${article.content_type}`;
+        const summary = document.createElement("p");
+        summary.textContent = article.summary;
+        const actions = document.createElement("div");
+        actions.className = "auth-actions";
+        const editButton = document.createElement("button");
+        editButton.className = "button";
+        editButton.type = "button";
+        editButton.textContent = "Editar";
+        editButton.addEventListener("click", () => {
+            currentRemoteArticleId = article.id;
+            if (remoteArticleTitle) remoteArticleTitle.value = article.title || "";
+            if (remoteArticleSubject) remoteArticleSubject.value = article.subject || "";
+            if (remoteArticleLevel) remoteArticleLevel.value = article.level || "";
+            if (remoteArticleSummary) remoteArticleSummary.value = article.summary || "";
+            if (remoteArticleResource) remoteArticleResource.value = article.resource || "";
+            if (remoteArticleSave) remoteArticleSave.textContent = "Guardar cambios del artículo";
+            setRemoteArticlesMessage("Artículo cargado para editar.");
+        });
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "button";
+        deleteButton.type = "button";
+        deleteButton.textContent = "Eliminar";
+        deleteButton.addEventListener("click", () => { void deleteRemoteArticle(article.id); });
+        actions.append(editButton, deleteButton);
+        item.append(title, meta, summary, actions);
+        remoteArticlesList.append(item);
+    });
+};
+
 const updateAuthUI = (session) => {
     const user = session?.user || null;
     const signedIn = Boolean(user);
@@ -70,12 +158,14 @@ const updateAuthUI = (session) => {
     if (authIdentity) authIdentity.hidden = !signedIn;
     if (authUserId) authUserId.textContent = user?.id || "";
     if (remoteProfilePanel) remoteProfilePanel.hidden = !signedIn;
+    if (remoteArticlesPanel) remoteArticlesPanel.hidden = !signedIn;
     if (signedIn) {
         setMessage(`Sesión iniciada con ${user.email || "tu identidad autenticada"}.`);
     } else {
         remoteProfileRequestId += 1;
         if (authPassword) authPassword.value = "";
         clearRemoteProfileForm();
+        clearRemoteArticles();
         setMessage("No has iniciado sesión. El sitio sigue disponible sin cuenta.");
     }
 };
@@ -155,6 +245,146 @@ const saveRemoteProfile = async () => {
     return { data: result.data, error: null };
 };
 
+const listRemoteArticles = async ({ quiet = false } = {}) => {
+    const { user, error: userError } = await getAuthenticatedUser();
+    if (userError || !user) {
+        clearRemoteArticles();
+        if (!quiet) setRemoteArticlesMessage("Inicia sesión para consultar tus artículos remotos.", true);
+        return { data: [], error: userError || new Error("No hay una sesión autenticada.") };
+    }
+
+    if (!quiet) setRemoteArticlesMessage("Cargando tus artículos remotos…");
+    const listCacheBuster = globalThis.crypto.randomUUID();
+    const { data, error } = await supabase
+        .from("articles")
+        .select(REMOTE_ARTICLE_LIST_COLUMNS)
+        .not("id", "is", null)
+        .neq("id", listCacheBuster)
+        .not("title", "is", null)
+        .eq("content_type", "article")
+        .eq("owner_id", user.id)
+        .order("created_at", { ascending: false })
+        .limit(50);
+    if (error) {
+        setRemoteArticlesMessage(error.message, true);
+        return { data: [], error };
+    }
+
+    const articles = data || [];
+    renderRemoteArticles(articles);
+    setRemoteArticlesMessage(articles.length ? `${articles.length} artículo(s) remoto(s) propio(s).` : "No hay artículos remotos todavía.");
+    return { data: articles, error: null };
+};
+
+const createRemoteArticle = async () => {
+    const { user, error: userError } = await getAuthenticatedUser();
+    if (userError || !user) {
+        setRemoteArticlesMessage("Inicia sesión para crear un artículo remoto.", true);
+        return { data: null, error: userError || new Error("No hay una sesión autenticada.") };
+    }
+    const values = getRemoteArticleValues();
+    if (!values.title || !values.subject || !values.level || !values.summary) {
+        setRemoteArticlesMessage("Completa título, materia, nivel y resumen.", true);
+        return { data: null, error: new Error("Faltan campos obligatorios.") };
+    }
+
+    remoteArticleSave?.setAttribute("aria-busy", "true");
+    setRemoteArticlesMessage("Creando artículo remoto…");
+    const { data: rows, error } = await supabase
+        .from("articles")
+        .insert({ owner_id: user.id, ...values, content: null })
+        .select(REMOTE_ARTICLE_COLUMNS)
+        .limit(1);
+    remoteArticleSave?.removeAttribute("aria-busy");
+    const data = rows?.[0] || null;
+    if (error) {
+        setRemoteArticlesMessage(error.message, true);
+        return { data: null, error };
+    }
+    if (!data) {
+        const emptyError = new Error("Supabase no devolvió el artículo creado.");
+        setRemoteArticlesMessage(emptyError.message, true);
+        return { data: null, error: emptyError };
+    }
+    clearRemoteArticleForm();
+    await listRemoteArticles({ quiet: true });
+    setRemoteArticlesMessage("Artículo remoto creado correctamente.");
+    return { data, error: null };
+};
+
+const updateRemoteArticle = async articleId => {
+    if (!articleId) return { data: null, error: new Error("No hay un artículo seleccionado.") };
+    const { user, error: userError } = await getAuthenticatedUser();
+    if (userError || !user) {
+        setRemoteArticlesMessage("Inicia sesión para actualizar un artículo remoto.", true);
+        return { data: null, error: userError || new Error("No hay una sesión autenticada.") };
+    }
+    const values = getRemoteArticleValues();
+    if (!values.title || !values.subject || !values.level || !values.summary) {
+        setRemoteArticlesMessage("Completa título, materia, nivel y resumen.", true);
+        return { data: null, error: new Error("Faltan campos obligatorios.") };
+    }
+
+    remoteArticleSave?.setAttribute("aria-busy", "true");
+    setRemoteArticlesMessage("Actualizando artículo remoto…");
+    const { data: rows, error } = await supabase
+        .from("articles")
+        .update(values)
+        .eq("id", articleId)
+        .select(REMOTE_ARTICLE_COLUMNS)
+        .limit(1);
+    remoteArticleSave?.removeAttribute("aria-busy");
+    const data = rows?.[0] || null;
+    if (error) {
+        setRemoteArticlesMessage(error.message, true);
+        return { data: null, error };
+    }
+    if (!data) {
+        const emptyError = new Error("El artículo no existe o no pertenece a tu cuenta.");
+        setRemoteArticlesMessage(emptyError.message, true);
+        return { data: null, error: emptyError };
+    }
+    clearRemoteArticleForm();
+    await listRemoteArticles({ quiet: true });
+    setRemoteArticlesMessage("Artículo remoto actualizado correctamente.");
+    return { data, error: null };
+};
+
+const deleteRemoteArticle = async articleId => {
+    if (!articleId) return { error: new Error("No hay un artículo seleccionado.") };
+    const { user, error: userError } = await getAuthenticatedUser();
+    if (userError || !user) {
+        setRemoteArticlesMessage("Inicia sesión para eliminar un artículo remoto.", true);
+        return { error: userError || new Error("No hay una sesión autenticada.") };
+    }
+
+    setRemoteArticlesMessage("Eliminando artículo remoto…");
+    const { data: deletedRows, error } = await supabase
+        .from("articles")
+        .delete()
+        .eq("id", articleId)
+        .select("id")
+        .limit(1);
+    if (error) {
+        setRemoteArticlesMessage(error.message, true);
+        return { error };
+    }
+    if (!deletedRows?.length) {
+        const emptyError = new Error("El artículo no existe o no pertenece a tu cuenta.");
+        setRemoteArticlesMessage(emptyError.message, true);
+        return { error: emptyError };
+    }
+    if (currentRemoteArticleId === articleId) clearRemoteArticleForm();
+    await listRemoteArticles({ quiet: true });
+    setRemoteArticlesMessage("Artículo remoto eliminado correctamente.");
+    return { error: null };
+};
+
+const handleRemoteArticleSubmit = event => {
+    event.preventDefault();
+    void (currentRemoteArticleId ? updateRemoteArticle(currentRemoteArticleId) : createRemoteArticle());
+};
+
 const copyLocalNameToRemoteDraft = () => {
     const localName = localStorage.getItem("enciclostudio-name")?.trim() || "";
     if (!localName) {
@@ -221,12 +451,16 @@ const scheduleRemoteProfileLoad = () => {
     }, 0);
 };
 
+
 authSignIn?.addEventListener("click", signIn);
 authSignUp?.addEventListener("click", signUp);
 authSignOut?.addEventListener("click", signOut);
 loadRemoteProfileButton?.addEventListener("click", () => { void loadRemoteProfile(); });
 saveRemoteProfileButton?.addEventListener("click", () => { void saveRemoteProfile(); });
 useLocalProfileName?.addEventListener("click", copyLocalNameToRemoteDraft);
+remoteArticleForm?.addEventListener("submit", handleRemoteArticleSubmit);
+remoteArticleReset?.addEventListener("click", () => { clearRemoteArticleForm(); setRemoteArticlesMessage("Formulario limpio."); });
+remoteArticlesRefresh?.addEventListener("click", () => { void listRemoteArticles(); });
 authPassword?.addEventListener("keydown", event => {
     if (event.key === "Enter") signIn();
 });
@@ -234,12 +468,16 @@ authPassword?.addEventListener("keydown", event => {
 supabase.auth.onAuthStateChange((event, session) => {
     updateAuthUI(session);
     document.dispatchEvent(new CustomEvent("enciclostudio:auth", { detail: { event, session } }));
-    if (session) scheduleRemoteProfileLoad();
+    if (session && (event === "SIGNED_IN" || event === "USER_UPDATED")) {
+        scheduleRemoteProfileLoad();
+    }
 });
 
 const { data: { session } } = await supabase.auth.getSession();
 updateAuthUI(session);
-if (session) scheduleRemoteProfileLoad();
+if (session) {
+    scheduleRemoteProfileLoad();
+}
 
 globalThis.EnciclostudioAuth = {
     client: supabase,
@@ -248,6 +486,10 @@ globalThis.EnciclostudioAuth = {
     getProfile: loadRemoteProfile,
     loadProfile: loadRemoteProfile,
     saveProfile: saveRemoteProfile,
+    listRemoteArticles,
+    createRemoteArticle,
+    updateRemoteArticle,
+    deleteRemoteArticle,
     signIn,
     signUp,
     signOut
