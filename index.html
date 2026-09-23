@@ -14,8 +14,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="estilos.css" rel="stylesheet"/>
 <link href="enciclostudio.css" rel="stylesheet"/>
-<link href="ilustraciones.css" rel="stylesheet"/><link href="manifest.json" rel="manifest"/><meta content="#171735" name="theme-color"/></head>
-<body class="enciclostudio illustrated-theme">
+<link href="ilustraciones.css" rel="stylesheet"/><link href="demo-migration.css" rel="stylesheet"/><link href="manifest.json" rel="manifest"/><meta content="#171735" name="theme-color"/></head>
+<body class="enciclostudio illustrated-theme demo-app">
 <header class="site-header">
 <a aria-label="Enciclostudio, inicio" class="brand" href="index.html"><span aria-hidden="true" class="brand-mark">●</span> Enciclostudio</a>
 <nav aria-label="Navegación principal">
@@ -27,6 +27,23 @@
 <button class="profile-button" id="openProfile" type="button">Mi perfil</button>
 <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Abrir menú" class="menu-toggle" id="menuToggle" type="button"><span></span></button>
 </header>
+<button aria-controls="demoSide" aria-expanded="false" aria-label="Abrir panel lateral" class="demo-side-toggle" id="demoSideToggle" type="button">☰</button>
+<aside aria-label="Panel de Enciclostudio" class="demo-side" id="demoSide">
+<h2>Enciclostudio</h2>
+<a href="index.html#materias">⌂ <span>Inicio</span></a>
+<a href="index.html#biblioteca">▣ <span>Biblioteca</span></a>
+<a href="index.html#estudiar">◌ <span>Rutas de estudio</span></a>
+<a href="tabla-periodica.html">▦ <span>Tabla periódica</span></a>
+<small>Mi espacio</small>
+<button type="button" id="demoProfileLink">◯ <span>Mi perfil</span></button>
+<a href="editor.html">✎ <span>Crear artículo</span></a>
+<small>Tema</small>
+<div class="demo-theme-menu" aria-label="Tema visual">
+<button type="button" data-demo-theme="purple" aria-pressed="false">Morado</button>
+<button type="button" data-demo-theme="light" aria-pressed="false">Claro</button>
+<button type="button" data-demo-theme="dark" aria-pressed="false">Oscuro</button>
+</div>
+</aside>
 <div aria-hidden="true" class="mobile-menu" id="mobileMenu">
 <a href="#materias">Explorar materias</a>
 <a href="#estudiar">Rutas de estudio</a>
@@ -120,6 +137,10 @@
 <span>const</span> aprender = <span>true</span>;</code></pre>
 </div>
 </section>
+<section aria-labelledby="download-title" class="section download-section" id="descargas">
+<div class="section-heading"><p class="section-kicker">Descargar Enciclostudio</p><h2 id="download-title">Aprende también cuando no tengas conexión.</h2><p>La web incluye PWA y caché de lectura. Instálala desde el navegador después de abrirla mediante HTTPS o localhost.</p></div>
+<div class="download-panel"><div><strong>Web y PWA</strong><p>Usa Enciclostudio en el navegador o instálalo como aplicación desde el menú del navegador.</p><a class="button" href="manifest.json">Ver manifest</a></div><div><strong>Contenido offline</strong><p>La caché incluye la portada, materias, editor, tabla periódica y artículos estáticos registrados por el service worker.</p><a class="button" href="offline.js">Consultar soporte offline</a></div><div><strong>Android y Windows</strong><p>APK, EXE y ZIP portable quedan como entregables posteriores; no se presentan como disponibles hasta ser construidos y probados.</p></div></div>
+</section>
 <section aria-labelledby="quiz-title" class="quiz-section">
 <div>
 <p class="section-kicker">Comprueba lo aprendido</p>
@@ -193,6 +214,6 @@
 </dialog>
 <script src="catalogo-articulos.js"></script>
 <script src="script.js"></script>
-<script src="offline.js"></script>
+<script src="offline.js"></script><script src="demo-migration.js"></script>
 <script src="auth.js?step74=articles-uuid-cache-bust-20260826200000" type="module"></script></body>
 </html>

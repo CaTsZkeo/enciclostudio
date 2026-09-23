@@ -1,4 +1,4 @@
-const CACHE_NAME = "enciclostudio-v3";
+const CACHE_NAME = "enciclostudio-v4-demo-migration";
 const PRECACHE = [
   "./index.html",
   "./quimica.html",
@@ -9,6 +9,8 @@ const PRECACHE = [
   "./offline.js",
   "./manifest.json",
   "./icon.svg",
+  "./demo-migration.css",
+  "./demo-migration.js",
   "./estilos.css",
   "./enciclostudio.css",
   "./articulos.css",

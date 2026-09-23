@@ -5,8 +5,8 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#fff8e8",
-  "theme_color": "#171735",
+  "background_color": "#100b24",
+  "theme_color": "#100b24",
   "description": "Enciclopedia educativa ilustrada para aprender sin conexión.",
   "icons": [
     {

@@ -1,0 +1,18 @@
+CUADERNO DE CAMPO — ENCICLOSTUDIO
+
+Registro hasta el 23 de septiembre de 2026
+
+Etapa inicial — fecha aproximada
+Se definió Enciclostudio como una enciclopedia educativa de ciencias con artículos, materias, buscador y tabla periódica.
+
+Etapa de estructura — fechas reconstruidas del historial Git
+Se saneó la estructura HTML, se mantuvieron rutas y se centralizaron metadatos con fallback histórico.
+
+Etapa Supabase — agosto de 2026
+Se crearon perfiles, autenticación, artículos remotos y el modelo separado `article_versions`. Las pruebas CRUD y Auth se realizaron con una cuenta de prueba sin registrar secretos.
+
+Etapa de demo — septiembre de 2026
+Se construyó una demo independiente con interfaz morada, panel lateral, temas, perfiles locales, lector offline, descargas HTML de páginas compatibles y tabla periódica visual.
+
+23 de septiembre de 2026
+Se creó un backup del repositorio original y se migró de forma aditiva el lenguaje visual de la demo a la portada original. Se conservaron catálogos, artículos, editor, rutas, Supabase y PWA. APK, EXE, sincronización local-cuenta, TTS completo y rastreo de sitios completos quedan para fases posteriores.
