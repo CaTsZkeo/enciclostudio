@@ -10,7 +10,7 @@ La aplicación actual es HTML, CSS y JavaScript sin framework obligatorio. `inde
 
 ## Supabase
 
-`auth.js` usa Supabase Auth desde el cliente con la clave pública existente. Las migraciones crean perfiles, artículos y `article_versions`. Las credenciales privadas y `service_role` no deben entrar al cliente. La sincronización de datos locales aún no se considera implementada.
+`auth.js` usa Supabase Auth desde el cliente con la clave pública existente. Incluye registro, inicio/cierre de sesión, persistencia, recuperación por email y cambio de contraseña mediante el evento `PASSWORD_RECOVERY`. Las migraciones crean perfiles, artículos y `article_versions`. Las credenciales privadas y `service_role` no deben entrar al cliente. La sincronización de datos locales aún no se considera implementada.
 
 ## Offline y PWA
 

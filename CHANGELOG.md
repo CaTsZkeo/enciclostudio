@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-09-24 — Fase 2: recuperación de cuenta
+
+- Añadida recuperación de contraseña mediante el email gestionado por Supabase Auth.
+- Añadido el flujo de restablecimiento con `PASSWORD_RECOVERY` y `auth.updateUser`.
+- La URL de retorno se genera desde la ubicación actual y conserva compatibilidad con GitHub Pages bajo `/enciclostudio/`.
+- Se mantuvieron el perfil local, `localStorage["enciclostudio-articles"]`, el editor y las migraciones existentes.
+
 ## 2026-09-23 — Migración incremental de la demo
 
 - Añadida la capa visual morada inspirada en la demo, sin reemplazar la arquitectura legacy.

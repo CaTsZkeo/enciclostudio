@@ -175,8 +175,16 @@
 <button class="button" id="authSignUp" type="button">Crear cuenta</button>
 <button class="button" hidden="" id="authSignOut" type="button">Cerrar sesión</button>
 </div>
+<button class="button" id="authPasswordRecovery" type="button">Recuperar contraseña por email</button>
 <p aria-live="polite" id="authSubmitStatus"></p>
 <p hidden="" id="authIdentity">Identidad autenticada: <code id="authUserId"></code></p>
+<section aria-labelledby="authResetTitle" class="auth-reset-panel" hidden="" id="authResetPanel">
+<p class="section-kicker">Restablecer contraseña</p>
+<h4 id="authResetTitle">Elige una contraseña nueva</h4>
+<label>Nueva contraseña <input autocomplete="new-password" id="authNewPassword" minlength="8" type="password"/></label>
+<button class="button" id="authUpdatePassword" type="button">Guardar nueva contraseña</button>
+<p aria-live="polite" id="authResetStatus"></p>
+</section>
 <section aria-labelledby="remoteProfileTitle" class="remote-profile-panel" hidden="" id="remoteProfilePanel">
 <p class="section-kicker">Perfil remoto opcional</p>
 <h4 id="remoteProfileTitle">Datos públicos de tu cuenta</h4>

@@ -17,6 +17,11 @@ const authPassword = document.getElementById("authPassword");
 const authSignIn = document.getElementById("authSignIn");
 const authSignUp = document.getElementById("authSignUp");
 const authSignOut = document.getElementById("authSignOut");
+const authPasswordRecovery = document.getElementById("authPasswordRecovery");
+const authResetPanel = document.getElementById("authResetPanel");
+const authNewPassword = document.getElementById("authNewPassword");
+const authUpdatePassword = document.getElementById("authUpdatePassword");
+const authResetStatus = document.getElementById("authResetStatus");
 const authIdentity = document.getElementById("authIdentity");
 const authUserId = document.getElementById("authUserId");
 const authSubmitStatus = document.getElementById("authSubmitStatus");
@@ -58,6 +63,19 @@ const setSubmitMessage = (message, isError = false) => {
     if (!authSubmitStatus) return;
     authSubmitStatus.textContent = message;
     authSubmitStatus.dataset.state = isError ? "error" : "ready";
+};
+
+const setResetMessage = (message, isError = false) => {
+    if (!authResetStatus) return;
+    authResetStatus.textContent = message;
+    authResetStatus.dataset.state = isError ? "error" : "ready";
+};
+
+const getAuthRedirectUrl = () => {
+    const url = new URL(window.location.href);
+    url.search = "";
+    url.hash = "";
+    return url.toString();
 };
 
 const setRemoteProfileMessage = (message, isError = false) => {
@@ -445,6 +463,45 @@ const signOut = async () => {
     setSubmitMessage("Sesión cerrada.");
 };
 
+const requestPasswordRecovery = async () => {
+    const email = authEmail?.value.trim() || "";
+    if (!email) {
+        setSubmitMessage("Escribe tu email para recibir el enlace de recuperación.", true);
+        authEmail?.focus();
+        return;
+    }
+    authPasswordRecovery?.setAttribute("aria-busy", "true");
+    setSubmitMessage("Enviando el enlace de recuperación…");
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: getAuthRedirectUrl()
+    });
+    authPasswordRecovery?.removeAttribute("aria-busy");
+    if (error) {
+        setSubmitMessage(error.message, true);
+        return;
+    }
+    setSubmitMessage("Revisa tu email para continuar con el restablecimiento.");
+};
+
+const updatePassword = async () => {
+    const password = authNewPassword?.value || "";
+    if (password.length < 8) {
+        setResetMessage("La nueva contraseña debe tener al menos 8 caracteres.", true);
+        return;
+    }
+    authUpdatePassword?.setAttribute("aria-busy", "true");
+    setResetMessage("Guardando la nueva contraseña…");
+    const { error } = await supabase.auth.updateUser({ password });
+    authUpdatePassword?.removeAttribute("aria-busy");
+    if (error) {
+        setResetMessage(error.message, true);
+        return;
+    }
+    if (authNewPassword) authNewPassword.value = "";
+    setResetMessage("Contraseña actualizada correctamente.");
+    setSubmitMessage("Puedes continuar usando tu cuenta.");
+};
+
 const scheduleRemoteProfileLoad = () => {
     window.setTimeout(() => {
         void loadRemoteProfile({ quiet: true });
@@ -455,6 +512,8 @@ const scheduleRemoteProfileLoad = () => {
 authSignIn?.addEventListener("click", signIn);
 authSignUp?.addEventListener("click", signUp);
 authSignOut?.addEventListener("click", signOut);
+authPasswordRecovery?.addEventListener("click", () => { void requestPasswordRecovery(); });
+authUpdatePassword?.addEventListener("click", () => { void updatePassword(); });
 loadRemoteProfileButton?.addEventListener("click", () => { void loadRemoteProfile(); });
 saveRemoteProfileButton?.addEventListener("click", () => { void saveRemoteProfile(); });
 useLocalProfileName?.addEventListener("click", copyLocalNameToRemoteDraft);
@@ -467,6 +526,8 @@ authPassword?.addEventListener("keydown", event => {
 
 supabase.auth.onAuthStateChange((event, session) => {
     updateAuthUI(session);
+    if (authResetPanel) authResetPanel.hidden = event !== "PASSWORD_RECOVERY";
+    if (event === "PASSWORD_RECOVERY") setResetMessage("Elige una contraseña nueva para completar el restablecimiento.");
     document.dispatchEvent(new CustomEvent("enciclostudio:auth", { detail: { event, session } }));
     if (session && (event === "SIGNED_IN" || event === "USER_UPDATED")) {
         scheduleRemoteProfileLoad();
